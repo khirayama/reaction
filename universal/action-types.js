@@ -1,0 +1,10 @@
+const actionTypes = {
+  START_APP: '__START_APP',
+  CHANGE_LOCATION: '__CHANGE_LOCATION',
+  UPDATE_TITLE: '__UPDATE_TITLE',
+
+  FETCH_POSTS: '__FETCH_POSTS',
+  FETCH_ACTIVITIES: '__FETCH_ACTIVITIES',
+};
+
+export default actionTypes;
