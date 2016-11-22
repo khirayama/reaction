@@ -33,6 +33,7 @@
     "gulp-postcss": "^6.2.0",
     "nodemon": "^1.11.0",
     "plumber": "^0.4.8",
+    "postcss-easy-import": "^1.0.1",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^3.0.0",
     "react": "^15.3.2",

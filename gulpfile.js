@@ -6,6 +6,7 @@ const watchify = require('watchify');
 const source = require('vinyl-source-stream');
 
 const postcss = require('gulp-postcss');
+const csseasyimport = require('postcss-easy-import');
 const csssimplevars = require('postcss-simple-vars');
 const cssnested = require('postcss-nested');
 const autoprefixer = require('autoprefixer');
@@ -30,9 +31,12 @@ const options = {
     },
   },
   styles: {
+    csseasyimport: {
+      glob: true
+    },
     autoprefixer: {
       browsers: ['last 2 versions'],
-    }
+    },
   },
 };
 
@@ -41,6 +45,7 @@ function buildStyles(isWatch) {
     console.log('build: styles');
 
     const processors = [
+      csseasyimport(options.styles.csseasyimport),
       csssimplevars,
       cssnested,
       autoprefixer(options.styles.autoprefixer),
