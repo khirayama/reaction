@@ -10,7 +10,9 @@
     "build:server": "NODE_PATH=./ NODE_ENV=development babel-node server/app.js",
     "watch:server": "nodemon --ignore client --ignore public --exec npm run build:server",
     "build:client": "NODE_PATH=./ gulp build",
-    "watch:client": "NODE_PATH=./ gulp watch"
+    "watch:client": "NODE_PATH=./ gulp watch",
+    "lint": "NODE_PATH=./ eslint",
+    "lint:fix": "NODE_PATH=./ eslint --fix"
   },
   "dependencies": {
     "autoprefixer": "^6.5.3",
@@ -20,6 +22,11 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "cssnano": "^3.8.0",
+    "eslint": "^3.10.2",
+    "eslint-config-xo-react": "^0.10.0",
+    "eslint-config-xo-space": "^0.15.0",
+    "eslint-plugin-jsx-a11y": "^3.0.1",
+    "eslint-plugin-react": "^6.7.1",
     "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-plumber": "^1.1.0",
