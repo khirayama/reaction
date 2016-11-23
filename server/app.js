@@ -3,7 +3,7 @@ import express from 'express';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 
-import {removeAllListeners} from 'universal/dispatcher';
+import {unsubscribeAll} from 'universal/libs/micro-dispatcher';
 import Store from 'universal/store';
 
 import Container from 'universal/views/container';
@@ -23,7 +23,7 @@ function layout(content, state) {
         <script src="/bundle.js" defer></script>
       </head>
       <body>
-        <section id="app">${content}</section>
+        <section class="application">${content}</section>
       </body>
       <script>var state = ${JSON.stringify(state)}</script>
     </html>
@@ -33,7 +33,7 @@ function layout(content, state) {
 app.use(express.static('public'));
 
 app.get('/*', (req, res) => {
-  removeAllListeners();
+  unsubscribeAll();
 
   const store = new Store();
 

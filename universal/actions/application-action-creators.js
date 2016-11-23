@@ -1,5 +1,5 @@
-import {dispatch} from 'universal/dispatcher';
-import types from 'universal/action-types';
+import {dispatch} from 'universal/libs/micro-dispatcher';
+import types from 'universal/constants/action-types';
 
 function initializeApplication() {
   return new Promise((resolve, reject) => {

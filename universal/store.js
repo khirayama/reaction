@@ -1,7 +1,7 @@
 import {EventEmitter} from 'events';
 
-import types from 'universal/action-types';
-import {subscribe} from 'universal/dispatcher';
+import types from 'universal/constants/action-types';
+import {subscribe} from 'universal/libs/micro-dispatcher';
 
 const actionTypes = {
   CHANGE_STORE: '__CHANGE_STORE',

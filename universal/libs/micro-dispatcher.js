@@ -12,6 +12,8 @@ export function subscribe(callback) {
   dispatcher.addListener(ACTION_DISPATCH, callback);
 }
 
-export function removeAllListeners(action) {
+export function unsubscribeAll() {
   dispatcher.removeAllListeners();
 }
+
+export default dispatcher;

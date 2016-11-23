@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
-import {dispatch} from 'universal/dispatcher';
-import types from 'universal/action-types';
+import {dispatch} from 'universal/libs/micro-dispatcher';
+import types from 'universal/constants/action-types';
 
 import {changeLocation} from 'universal/actions/application-action-creators';
 
