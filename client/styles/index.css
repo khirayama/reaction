@@ -1,4 +1,6 @@
-@import "./*";
+@import "./reset";
+@import "./color";
+@import "./application";
 
 .FeedBox {
   width: 680px;
