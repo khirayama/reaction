@@ -1,0 +1,39 @@
+.feed-box {
+  width: 680px;
+  margin: 40px auto;
+  &-tab {
+    width: 100%;
+    display: flex;
+    margin-bottom: 32px;
+    &-button {
+      flex: 1;
+      padding: 8px;
+      background: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      &__active {
+        box-shadow: 0 3px 0 $color-primary;
+      }
+    }
+  }
+  .feed-list > li {
+    padding: 8px;
+    border-bottom: solid 1px #ccc;
+  }
+  .response-list {
+    width: 100%;
+    border: solid 1px #ccc;
+    margin: 16px 0;
+    li {
+      display: inline-block;
+      width: 25%;
+      padding: 4px;
+      text-align: center;
+      cursor: pointer;
+      & + li {
+        border-left: solid 1px #ccc;
+      }
+    }
+  }
+}
+

@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import classNames from 'classnames';
 
 export default class FeedBox extends Component {
   constructor() {
@@ -62,10 +63,16 @@ export default class FeedBox extends Component {
         break;
     }
     return (
-      <section className="FeedBox">
-        <div className="tab">
-          <button className={(this.state.activeTab === 'posts') ? 'active' : ''} onClick={() => this.setState({activeTab: 'posts'})}>POSTS</button>
-          <button className={(this.state.activeTab === 'activities') ? 'active' : ''} onClick={() => this.setState({activeTab: 'activities'})}>ACTIVITIES</button>
+      <section className="feed-box">
+        <div className="feed-box-tab">
+          <button
+            className={classNames('feed-box-tab-button', { 'feed-box-tab-button__active': this.state.activeTab === 'posts'})}
+            onClick={() => this.setState({activeTab: 'posts'})}
+          >POSTS</button>
+          <button
+            className={classNames('feed-box-tab-button', { 'feed-box-tab-button__active': this.state.activeTab === 'activities'})}
+            onClick={() => this.setState({activeTab: 'activities'})}
+          >ACTIVITIES</button>
         </div>
         <ul className="feed-list">{content}</ul>
       </section>

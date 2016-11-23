@@ -23,7 +23,7 @@ export default class Link extends Component {
       <a
         href={this.props.href}
         onClick={this.handleClick}
-        className={`Link ${this.props.className}`}
+        className={`link ${this.props.className}`}
       >{this.props.children}</a>
     );
   }

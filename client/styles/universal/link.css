@@ -1,0 +1,25 @@
+.link {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: $radius;
+  color: $color-text-primary;
+  background-color: inherit;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  cursor: pointer;
+  transition: $timing-basic;
+  transition-property: background;
+  &:hover,
+  &:focus {
+    background-color: $color-ui-focus;
+  }
+  &:active {
+    background-color: $color-ui-active;
+  }
+}
+
+.mobile {
+  .link {
+    padding: 8px;
+  }
+}
