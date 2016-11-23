@@ -27,7 +27,7 @@ ul {
   cursor: pointer;
 }
 .FeedBox .tab button.active {
-  box-shadow: 0 3px 0 #2196f3;
+  box-shadow: 0 3px 0 $color-primary;
 }
 
 .FeedBox .feed-list > li {

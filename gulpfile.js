@@ -87,10 +87,32 @@ function buildScripts(isWatch) {
   return build();
 }
 
+function buildFiles(isWatch) {
+  function build() {
+    console.log('build: files');
+
+    return gulp.src(`${SRC_ROOT}/**/*.{csv,json,ico,txt,woff2}`)
+      .pipe(plumber())
+      .pipe(gulp.dest(DIST_ROOT));
+  }
+
+  if (isWatch) {
+    return () => {
+      build();
+      gulp.watch(`${SRC_ROOT}/**/*.{csv,json,ico,txt,woff2}`, build);
+    };
+  }
+  return () => {
+    build();
+  };
+}
+
 // tasks
 gulp.task('build:styles', buildStyles(false));
 gulp.task('watch:styles', buildStyles(true));
 gulp.task('build:scripts', buildScripts(false));
 gulp.task('watch:scripts', buildScripts(true));
-gulp.task('build', ['build:styles', 'build:scripts']);
-gulp.task('watch', ['watch:styles', 'watch:scripts']);
+gulp.task('build:files', buildFiles(false));
+gulp.task('watch:files', buildFiles(true));
+gulp.task('build', ['build:styles', 'build:scripts', 'build:files']);
+gulp.task('watch', ['watch:styles', 'watch:scripts', 'build:files']);
