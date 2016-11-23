@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import React from 'react';
 
 import MicroContainer from 'universal/libs/micro-container';

@@ -40,6 +40,9 @@ export default class Store extends MicroStore {
         case types.FETCH_ACTIVITIES:
           this.state.activities = action.activities;
           break;
+
+        default:
+          break;
       }
 
       console.log(action, this.state);

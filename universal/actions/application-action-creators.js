@@ -2,14 +2,14 @@ import {dispatch} from 'universal/libs/micro-dispatcher';
 import types from 'universal/constants/action-types';
 
 function initializeApplication() {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     console.log('fetch application resource');
     resolve();
   });
 }
 
 function updateTitle(title) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     dispatch({
       type: types.UPDATE_TITLE,
       title,
@@ -27,7 +27,7 @@ function fetchPosts() {
       description: 'hoge hoge hoge hoge',
     });
   }
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     dispatch({
       type: types.FETCH_POSTS,
       posts,
@@ -75,7 +75,7 @@ function fetchActivities() {
       post: {name: postName},
     });
   }
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     dispatch({
       type: types.FETCH_ACTIVITIES,
       activities,

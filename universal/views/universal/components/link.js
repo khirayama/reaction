@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import React, {Component, PropTypes} from 'react';
 
 import {changeLocation} from 'universal/actions/application-action-creators';
