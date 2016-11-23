@@ -38,7 +38,7 @@ app.get('/*', (req, res) => {
   const store = new Store();
 
   store.ready(() => {
-    const content = renderToString(<Container store={store} />);
+    const content = renderToString(<Container store={store}/>);
     res.send(layout(content, store.getState()));
   });
 

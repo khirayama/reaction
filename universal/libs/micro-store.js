@@ -1,9 +1,9 @@
 /* global window */
-import MicroEmitter from 'micro-emitter';
+import {EventEmitter} from 'events';
 
 const EVENT_CHANGE = '__CHANGE_STORE';
 
-export default class MicroStore extends MicroEmitter {
+export default class MicroStore extends EventEmitter {
   constructor() {
     super();
 

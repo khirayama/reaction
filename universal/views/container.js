@@ -3,6 +3,8 @@ import React, {Component, PropTypes} from 'react';
 import {dispatch} from 'universal/libs/micro-dispatcher';
 import types from 'universal/constants/action-types';
 
+import MicroContainer from 'universal/libs/micro-container';
+
 import {changeLocation} from 'universal/actions/application-action-creators';
 
 class Link extends Component {
@@ -99,31 +101,15 @@ class FeedBox extends Component {
   }
 }
 
-export default class Container extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {store: this.props.store};
-
-    this.updateState = this._updateState.bind(this);
-  }
-  componentDidMount() {
-    this.props.store.addChangeListener(this.updateState);
-  }
-  _updateState() {
-    this.setState({store: this.props.store});
-  }
-  getStore() {
-    return this.props.store;
-  }
-  updateTitle(title) {
+export default class Container extends MicroContainer {
+  _updateTitle(title) {
     window.document.title = title;
   }
   render() {
     const state = this.props.store.getState();
 
     if (typeof window === 'object') {
-      this.updateTitle(state.title);
+      this._updateTitle(state.title);
     }
 
     switch (state.pathname) {

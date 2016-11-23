@@ -1,24 +1,8 @@
-import {EventEmitter} from 'events';
-
 import types from 'universal/constants/action-types';
 import {subscribe} from 'universal/libs/micro-dispatcher';
+import MicroStore from 'universal/libs/micro-store';
 
-const actionTypes = {
-  CHANGE_STORE: '__CHANGE_STORE',
-  READY_APP: '__READY_APP',
-};
-
-class MicroStore extends EventEmitter {
-  getState() {
-    return Object.assign({}, this.state);
-  }
-  dispatchChange() {
-    this.emit(actionTypes.CHANGE_STORE);
-  }
-  addChangeListener(listener) {
-    this.addListener(actionTypes.CHANGE_STORE, listener);
-  }
-}
+const READY_APPLICATION = '__READY_APPLICATION';
 
 export default class Store extends MicroStore {
   constructor(state) {
@@ -63,9 +47,9 @@ export default class Store extends MicroStore {
     });
   }
   _dispatchReady() {
-    this.emit(actionTypes.READY_APP);
+    this.emit(READY_APPLICATION);
   }
   ready(callback) {
-    this.addListener(actionTypes.READY_APP, callback);
+    this.addListener(READY_APPLICATION, callback);
   }
 }
