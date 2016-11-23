@@ -12,35 +12,46 @@ export default class Container extends MicroContainer {
   _updateTitle(title) {
     window.document.title = title;
   }
-  render() {
+  _createPageContainer() {
     const state = this.props.store.getState();
-
-    if (typeof window === 'object') {
-      this._updateTitle(state.title);
-    }
 
     switch (state.pathname) {
       case '/':
         return (
-          <section>
+          <section className="page">
+            <Link href="/dashboard">to dashboard</Link>
             <FeedBox posts={state.posts} activities={state.activities} />
           </section>
         );
       case '/dashboard':
         return (
-          <section>
+          <section className="page">
             <h1>Dashboard</h1>
             <Link href="/">to top</Link>
           </section>
         );
       default:
         return (
-          <section>
+          <section className="page">
             <h1>Not Found</h1>
             <Link href="/">to top</Link>
           </section>
         );
     }
+  }
+  render() {
+    const state = this.props.store.getState();
+    const pageContainer = this._createPageContainer();
+
+    if (typeof window === 'object') {
+      this._updateTitle(state.title);
+    }
+
+    return (
+      <section className="application-content">
+        <section className="page-container">{pageContainer}</section>
+      </section>
+    );
   }
 }
 

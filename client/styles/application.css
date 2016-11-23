@@ -29,10 +29,15 @@ body {
 .application {
   width: 100%;
   height: 100%;
-  .application-content {
+  &-content {
     width: 100%;
     height: 100%;
-    overflow: scroll;
     background: $color-background;
   }
+}
+
+.page-container {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
 }
