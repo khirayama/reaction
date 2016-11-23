@@ -13,9 +13,9 @@ export default class FeedBox extends Component {
   }
   render() {
     let content = null;
-    switch(this.state.activeTab) {
+    switch (this.state.activeTab) {
       case 'posts':
-        content = this.props.posts.map((post) => {
+        content = this.props.posts.map(post => {
           if (post.id === this.state.selectedPostId) {
             return (
               <li key={post.id} onClick={() => this.setState({selectedPostId: null})}>
@@ -35,20 +35,20 @@ export default class FeedBox extends Component {
         });
         break;
       case 'activities':
-        content = this.props.activities.map((activity) => {
+        content = this.props.activities.map(activity => {
           if (activity.id === this.state.selectedActivityId) {
-          return (
-            <li key={activity.id} onClick={() => this.setState({selectedActivityId: null})}>
-              <h2><a href="/">{activity.post.name}</a></h2>
-              <hr/>
-              <h3>{activity.user.name}さんが「{activity.post.name}」に {activity.type} しました！</h3>
-              <ul className="response-list">
-                <li>いいね！</li>
-                <li>コメント</li>
-                <li>あとでよむ</li>
-                <li>ブックマーク</li>
-              </ul>
-            </li>
+            return (
+              <li key={activity.id} onClick={() => this.setState({selectedActivityId: null})}>
+                <h2><a href="/">{activity.post.name}</a></h2>
+                <hr/>
+                <h3>{activity.user.name}さんが「{activity.post.name}」に {activity.type} しました！</h3>
+                <ul className="response-list">
+                  <li>いいね！</li>
+                  <li>コメント</li>
+                  <li>あとでよむ</li>
+                  <li>ブックマーク</li>
+                </ul>
+              </li>
             );
           }
           return (
@@ -58,21 +58,21 @@ export default class FeedBox extends Component {
                 <a href="/">{activity.post.name}</a>
               」に {activity.type} しました！
             </li>
-            );
-        })
+          );
+        });
         break;
     }
     return (
       <section className="feed-box">
         <div className="feed-box-tab">
           <button
-            className={classNames('feed-box-tab-button', { 'feed-box-tab-button__active': this.state.activeTab === 'posts'})}
+            className={classNames('feed-box-tab-button', {'feed-box-tab-button__active': this.state.activeTab === 'posts'})}
             onClick={() => this.setState({activeTab: 'posts'})}
-          >POSTS</button>
+            >POSTS</button>
           <button
-            className={classNames('feed-box-tab-button', { 'feed-box-tab-button__active': this.state.activeTab === 'activities'})}
+            className={classNames('feed-box-tab-button', {'feed-box-tab-button__active': this.state.activeTab === 'activities'})}
             onClick={() => this.setState({activeTab: 'activities'})}
-          >ACTIVITIES</button>
+            >ACTIVITIES</button>
         </div>
         <ul className="feed-list">{content}</ul>
       </section>

@@ -71,7 +71,7 @@ function fetchActivities() {
     activities.push({
       id: index,
       type: activityType,
-      user: {name: name},
+      user: {name},
       post: {name: postName},
     });
   }
@@ -115,5 +115,5 @@ export function changeLocation(pathname) {
     type: types.CHANGE_LOCATION,
     pathname,
   });
-};
+}
 
