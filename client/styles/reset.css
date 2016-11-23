@@ -72,7 +72,8 @@ h6 {
 
 input,
 textarea,
-select {
+select,
+button {
   font-size: inherit;
   font-family: inherit;
 }
