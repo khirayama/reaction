@@ -4,6 +4,7 @@ import React from 'react';
 
 import MicroContainer from 'universal/libs/micro-container';
 
+import HomePage from 'universal/views/universal/pages/home-page';
 import Link from 'universal/views/universal/components/link.js';
 import FeedBox from 'universal/views/universal/components/feed-box.js';
 
@@ -16,17 +17,12 @@ export default class PageContainer extends MicroContainer {
 
     switch (state.pathname) {
       case '/':
+        return <HomePage state={state} />;
+      case '/dashboard':
         return (
           <section className="page">
             <Link href="/dashboard">to dashboard</Link>
             <FeedBox posts={state.posts} activities={state.activities}/>
-          </section>
-        );
-      case '/dashboard':
-        return (
-          <section className="page">
-            <h1>Dashboard</h1>
-            <Link href="/">to top</Link>
           </section>
         );
       default:
