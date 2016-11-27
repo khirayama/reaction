@@ -1,6 +1,6 @@
 {
-  "name": "response",
-  "short_name": "response",
+  "name": "reaction",
+  "short_name": "reaction",
   "icons": [{
     "src": "/public/icon.png",
     "sizes": "144x144",

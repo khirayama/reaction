@@ -35,7 +35,7 @@ export default class FeedBox extends Component {
               <li key={post.id} onClick={this.handleClickPostListItem} value={null}>
                 <h2>{post.title}</h2>
                 <p>{post.description}</p>
-                <ul className="response-list">
+                <ul className="reaction-list">
                   <li>いいね！</li>
                   <li>コメント</li>
                   <li>あとでよむ</li>
@@ -55,7 +55,7 @@ export default class FeedBox extends Component {
                 <h2><a href="/">{activity.post.name}</a></h2>
                 <hr/>
                 <h3>{activity.user.name}さんが「{activity.post.name}」に {activity.type} しました！</h3>
-                <ul className="response-list">
+                <ul className="reaction-list">
                   <li>いいね！</li>
                   <li>コメント</li>
                   <li>あとでよむ</li>
