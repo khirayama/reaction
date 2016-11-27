@@ -8,7 +8,7 @@
     "start": "npm run development",
     "development": "npm run watch:server & npm run watch:client",
     "build:server": "NODE_PATH=./ NODE_ENV=development babel-node server/app.js",
-    "watch:server": "nodemon --ignore client --ignore universal --ignore public --exec npm run build:server",
+    "watch:server": "nodemon --ignore client --ignore public --exec npm run build:server",
     "build:client": "NODE_PATH=./ gulp build",
     "watch:client": "NODE_PATH=./ gulp watch",
     "lint": "NODE_PATH=./ eslint",
