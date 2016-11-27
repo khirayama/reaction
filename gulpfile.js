@@ -54,7 +54,8 @@ function buildStyles(isWatch) {
     return gulp.src(`${SRC_ROOT}/styles/index.css`)
       .pipe(plumber())
       .pipe(postcss(processors))
-      .pipe(gulp.dest(DIST_ROOT));
+      .pipe(gulp.dest(DIST_ROOT))
+      .on('end', () => console.log('finish to build: styles'));
   }
 
   if (isWatch) {
@@ -79,7 +80,8 @@ function buildScripts(isWatch) {
         console.error(error.message);
       })
       .pipe(source('bundle.js'))
-      .pipe(gulp.dest(DIST_ROOT));
+      .pipe(gulp.dest(DIST_ROOT))
+      .on('end', () => console.log('finish to build: scripts'));
     };
   }
 
@@ -93,7 +95,8 @@ function buildFiles(isWatch) {
 
     return gulp.src(`${SRC_ROOT}/**/*.{csv,json,ico,txt,woff2}`)
       .pipe(plumber())
-      .pipe(gulp.dest(DIST_ROOT));
+      .pipe(gulp.dest(DIST_ROOT))
+      .on('end', () => console.log('finish to build: files'));
   }
 
   if (isWatch) {
