@@ -2,7 +2,7 @@ import React from 'react';
 
 import MicroContainer from 'universal/libs/micro-container';
 
-import PageContainer from 'universal/views/page-container';
+import PageContainer from 'universal/views/universal/pages/page-container';
 
 export default class Container extends MicroContainer {
   render() {
