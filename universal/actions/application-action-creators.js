@@ -1,13 +1,6 @@
 import {dispatch} from 'universal/libs/micro-dispatcher';
 import types from 'universal/constants/action-types';
 
-function initializeApplication() {
-  return new Promise(resolve => {
-    console.log('fetch application resource');
-    resolve();
-  });
-}
-
 function updateTitle(title) {
   return new Promise(resolve => {
     dispatch({
@@ -101,7 +94,6 @@ function initializePage(pathname) {
 }
 
 export function startApplication(pathname) {
-  initializeApplication();
   initializePage(pathname);
   dispatch({
     type: types.START_APP,
@@ -116,4 +108,3 @@ export function changeLocation(pathname) {
     pathname,
   });
 }
-

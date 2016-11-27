@@ -21,8 +21,7 @@ export default class PageContainer extends MicroContainer {
       case '/dashboard':
         return (
           <section className="page">
-            <Link href="/dashboard">to dashboard</Link>
-            <FeedBox posts={state.posts} activities={state.activities}/>
+            <Link href="/">to Top</Link>
           </section>
         );
       default:
