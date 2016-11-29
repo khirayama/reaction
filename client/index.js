@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 import Store from 'universal/store';
 
-import Container from 'universal/views/application-container';
+import ApplicationContainer from 'universal/views/application-container';
 
 import {changeLocation} from 'universal/actions/application-action-creators';
 
@@ -16,5 +16,5 @@ window.addEventListener('popstate', () => {
 window.addEventListener('DOMContentLoaded', () => {
   const store = new Store(window.state);
 
-  ReactDOM.render(<Container store={store}/>, document.querySelector('.application'));
+  ReactDOM.render(<ApplicationContainer store={store}/>, document.querySelector('.application'));
 });

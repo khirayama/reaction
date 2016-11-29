@@ -14,4 +14,4 @@ export default class ApplicationContainer extends MicroContainer {
   }
 }
 
-Container.propTypes = {};
+ApplicationContainer.propTypes = {};

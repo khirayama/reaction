@@ -6,7 +6,7 @@ import {renderToString} from 'react-dom/server';
 import {unsubscribeAll} from 'universal/libs/micro-dispatcher';
 import Store from 'universal/store';
 
-import Container from 'universal/views/application-container';
+import ApplicationContainer from 'universal/views/application-container';
 
 import {startApplication} from 'universal/actions/application-action-creators';
 
@@ -38,7 +38,7 @@ app.get('/*', (req, res) => {
   const store = new Store();
 
   store.ready(() => {
-    const content = renderToString(<Container store={store}/>);
+    const content = renderToString(<ApplicationContainer store={store}/>);
     res.send(layout(content, store.getState()));
   });
 
