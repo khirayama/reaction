@@ -4,7 +4,7 @@ import MicroContainer from 'universal/libs/micro-container';
 
 import PageContainer from 'universal/views/universal/pages/page-container';
 
-export default class Container extends MicroContainer {
+export default class ApplicationContainer extends MicroContainer {
   render() {
     return (
       <section className="application-content">

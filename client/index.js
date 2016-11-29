@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 import Store from 'universal/store';
 
-import Container from 'universal/views/container';
+import Container from 'universal/views/application-container';
 
 import {changeLocation} from 'universal/actions/application-action-creators';
 

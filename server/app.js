@@ -6,7 +6,7 @@ import {renderToString} from 'react-dom/server';
 import {unsubscribeAll} from 'universal/libs/micro-dispatcher';
 import Store from 'universal/store';
 
-import Container from 'universal/views/container';
+import Container from 'universal/views/application-container';
 
 import {startApplication} from 'universal/actions/application-action-creators';
 
