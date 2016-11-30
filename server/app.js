@@ -13,19 +13,18 @@ import authRouter from 'server/routes/auth-router';
 const app = express();
 
 // middleware
-app
-  .use(express.static('public'))
-  .use(useragent.express())
-  .use(cookieParser())
-  .use(bodyParser.urlencoded({extended: true}))
-  .use(bodyParser.json())
-  .use(session({
-    keys: ['secret-key'],
-    name: '_reaction_session',
-  }))
-  .use(setupPassport())
-  .use(passport.initialize())
-  .use(passport.session());
+app.use(express.static('public'));
+app.use(useragent.express());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(session({
+  keys: ['secret-key'],
+  name: '_reaction_session',
+}));
+app.use(setupPassport());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // routing
 app.use('/auth', authRouter);
