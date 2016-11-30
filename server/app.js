@@ -2,7 +2,7 @@ import express from 'express';
 
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import session from 'express-session';
+import session from 'cookie-session';
 import passport from 'passport';
 import {Strategy as TwitterStrategy} from 'passport-twitter';
 
@@ -20,12 +20,10 @@ const authorize = (req, res, next) => {
 };
 
 passport.serializeUser((user, done) => {
-  console.log('serializeUser');
   done(null, user.id);
 });
 
 passport.deserializeUser((userId, done) => {
-  console.log('deserializeUser');
   done(null, userId);
 });
 
@@ -42,11 +40,8 @@ app
   .use(bodyParser.urlencoded({extended: true}))
   .use(bodyParser.json())
   .use(session({
-    secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true,
+    keys: ['secret-key'],
     name: '_reaction_session',
-    cookie: {secure: false},
   }))
   .use(passport.initialize())
   .use(passport.session());
