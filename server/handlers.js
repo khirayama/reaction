@@ -13,7 +13,14 @@ function layout(content, state) {
     <html>
       <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>${state.title}</title>
+
+        <!-- standalone for android-->
+        <link rel="manifest" href="manifest.json">
+        <!-- standalone for ios-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
         <link rel="stylesheet" href="/index.css">
         <script src="/bundle.js" defer></script>
       </head>
