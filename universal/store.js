@@ -45,7 +45,7 @@ export default class Store extends MicroStore {
           break;
       }
 
-      console.log(action, this.state);
+      // console.log(action, this.state);
       this.dispatchChange();
     });
   }

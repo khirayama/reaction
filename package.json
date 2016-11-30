@@ -23,6 +23,7 @@
     "body-parser": "^1.15.2",
     "browserify": "^13.1.1",
     "classnames": "^2.2.5",
+    "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "cssnano": "^3.8.0",
     "eslint": "^3.10.2",

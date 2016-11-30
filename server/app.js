@@ -1,85 +1,67 @@
 import express from 'express';
 
-// middleware
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import passport from 'passport';
-import { Strategy as TwitterStrategy } from 'passport-twitter';
+import {Strategy as TwitterStrategy} from 'passport-twitter';
 
-// application
-import ids from 'server/ids';
-import layout from 'server/layout';
-
-// universal
-import React from 'react';
-import {renderToString} from 'react-dom/server';
-
-import {unsubscribeAll} from 'universal/libs/micro-dispatcher';
-import Store from 'universal/store';
-
-import ApplicationContainer from 'universal/views/application-container';
-
-import {startApplication} from 'universal/actions/application-action-creators';
+import passportConfig from 'server/passport-config';
+import {applicationHandler} from 'server/handlers';
 
 const app = express();
 
+// passport config
+const authorize = (req, res, next) => {
+  if (!req.isAuthenticated || !req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+  next();
+};
+
 passport.serializeUser((user, done) => {
+  console.log('serializeUser');
   done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {
-  // User.findById(id, (err, user) => {
-  //   done(err, user);
-  // });
-  done(id);
+passport.deserializeUser((userId, done) => {
+  console.log('deserializeUser');
+  done(null, userId);
 });
 
-passport.use(new TwitterStrategy(ids.twitter,
-  (token, tokenSecret, profile, cb) => {
-    return cb(profile);
+passport.use(new TwitterStrategy(passportConfig.twitter,
+  (token, tokenSecret, profile, done) => {
+    done(null, profile);
   }
 ));
 
-app.use(express.static('public'));
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
-// auth
-app.post('/login', passport.authenticate('local', {
-  failureRedirect: '/login'
-}), (req, res) => {
-  res.redirect('/');
-});
-app.get('/auth/twitter', passport.authenticate('twitter'));
-app.get('/auth/twitter/callback', passport.authenticate('twitter', {
-  failureRedirect: '/login',
-}), (req, res) => {
-  res.redirect('/');
-});
+// middleware
+app
+  .use(express.static('public'))
+  .use(cookieParser())
+  .use(bodyParser.urlencoded({extended: true}))
+  .use(bodyParser.json())
+  .use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+    name: '_reaction_session',
+    cookie: {secure: false},
+  }))
+  .use(passport.initialize())
+  .use(passport.session());
 
 // application
-app.get('/*', (req, res) => {
-  unsubscribeAll();
+app
+  .get('/auth/twitter', passport.authenticate('twitter'))
+  .get('/auth/twitter/callback', passport.authenticate('twitter', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/',
+  }))
+  .get('/dashboard', authorize, applicationHandler)
+  .get('/*', applicationHandler);
 
-  const store = new Store();
-
-  store.ready(() => {
-    const content = renderToString(<ApplicationContainer store={store}/>);
-    res.send(layout(content, store.getState()));
-  });
-
-  startApplication(req.path);
-});
-
+// server
 app.listen(3000, () => {
   console.log('listening on port 3000');
 });
