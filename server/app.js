@@ -50,11 +50,20 @@ app
 
 // application
 app
-  .get('/auth/twitter', passport.authenticate('twitter'))
-  .get('/auth/twitter/callback', passport.authenticate('twitter', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/',
-  }))
+  .get('/auth/:provider', (req, res) => {
+    const provider = req.params.provider;
+    const authenticate = passport.authenticate(provider);
+
+    authenticate(req, res);
+  })
+  .get('/auth/:provider/callback', (req, res) => {
+    const provider = req.params.provider;
+
+    passport.authenticate(provider, {
+      successRedirect: '/dashboard',
+      failureRedirect: '/',
+    })(req, res);
+  })
   .get('/dashboard', authorize, applicationHandler)
   .get('/*', applicationHandler);
 
