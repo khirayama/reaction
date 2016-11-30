@@ -93,10 +93,21 @@ function initializePage(pathname) {
   }
 }
 
-export function startApplication(pathname) {
+function getUI(useragent) {
+  if (useragent.isMobile || useragent.isTablet) {
+    return 'mobile';
+  } else if (useragent.isDesktop) {
+    return 'desktop';
+  } else {
+    return 'desktop';
+  }
+}
+
+export function startApplication(pathname, useragent) {
   initializePage(pathname);
   dispatch({
     type: types.START_APP,
+    ui: getUI(useragent),
     pathname,
   });
 }

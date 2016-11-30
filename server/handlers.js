@@ -34,5 +34,5 @@ export function applicationHandler(req, res) {
     res.send(layout(content, store.getState()));
   });
 
-  startApplication(req.path);
+  startApplication(req.path, req.useragent);
 }

@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import session from 'cookie-session';
 import passport from 'passport';
 import {Strategy as TwitterStrategy} from 'passport-twitter';
+import useragent from 'express-useragent';
 
 import passportConfig from 'server/passport-config';
 import {applicationHandler} from 'server/handlers';
@@ -36,6 +37,7 @@ passport.use(new TwitterStrategy(passportConfig.twitter,
 // middleware
 app
   .use(express.static('public'))
+  .use(useragent.express())
   .use(cookieParser())
   .use(bodyParser.urlencoded({extended: true}))
   .use(bodyParser.json())
