@@ -1,8 +1,9 @@
 .DS_Store
 
-/.envrc
-
 /node_modules
-/public
 /npm-debug.log
 /yarn-error.log
+
+/.envrc
+
+/server/public

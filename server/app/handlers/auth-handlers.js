@@ -1,23 +1,18 @@
-import {Router} from 'express';
 import passport from 'passport';
 
-const router = new Router();
-
-router.get('/:provider', (req, res) => {
+export function authHandler(req, res) {
   const provider = req.params.provider;
   const authenticate = passport.authenticate(provider);
 
   authenticate(req, res);
-});
+};
 
-router.get('/:provider/callback', (req, res) => {
+export function authCallbackHandler(req, res) {
   const provider = req.params.provider;
   const authenticate = passport.authenticate(provider, {
-    successRedirect: '/dashboard',
+    successRedirect: '/app/dashboard',
     failureRedirect: '/',
   });
 
   authenticate(req, res);
-});
-
-export default router;
+};

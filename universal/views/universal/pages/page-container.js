@@ -17,9 +17,10 @@ export default class PageContainer extends MicroContainer {
     switch (state.pathname) {
       case '/':
         return <HomePage state={state}/>;
-      case '/dashboard':
+      case '/app/dashboard':
         return (
           <section className="page">
+            <h1>Feeds</h1>
             <Link href="/">to Top</Link>
           </section>
         );

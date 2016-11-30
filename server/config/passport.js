@@ -28,10 +28,3 @@ export function setup() {
     next();
   };
 }
-
-export function authorize(req, res, next) {
-  if (!req.isAuthenticated || !req.isAuthenticated()) {
-    return res.redirect('/');
-  }
-  next();
-}

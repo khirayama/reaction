@@ -13,7 +13,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
 const SRC_ROOT = 'client';
-const DIST_ROOT = 'public';
+const DIST_ROOT = 'server/public';
 
 const options = {
   scripts: {
