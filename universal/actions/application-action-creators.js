@@ -94,13 +94,14 @@ function initializePage(pathname) {
 }
 
 function getUI(useragent) {
+  let ui = 'desktop';
+
   if (useragent.isMobile || useragent.isTablet) {
-    return 'mobile';
+    ui = 'mobile';
   } else if (useragent.isDesktop) {
-    return 'desktop';
-  } else {
-    return 'desktop';
+    ui = 'desktop';
   }
+  return ui;
 }
 
 export function startApplication(pathname, useragent) {
