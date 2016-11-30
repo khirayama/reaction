@@ -5,7 +5,7 @@ export function authHandler(req, res) {
   const authenticate = passport.authenticate(provider);
 
   authenticate(req, res);
-};
+}
 
 export function authCallbackHandler(req, res) {
   const provider = req.params.provider;
@@ -15,4 +15,4 @@ export function authCallbackHandler(req, res) {
   });
 
   authenticate(req, res);
-};
+}

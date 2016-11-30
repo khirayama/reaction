@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
@@ -11,7 +12,7 @@ import router from 'server/config/routes';
 const app = express();
 
 // middleware
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(useragent.express());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));

@@ -11,8 +11,8 @@
     "watch:server": "nodemon --ignore client --ignore public --exec npm run build:server",
     "build:client": "NODE_PATH=./ gulp build",
     "watch:client": "NODE_PATH=./ gulp watch",
-    "lint": "NODE_PATH=./ eslint",
-    "lint:fix": "NODE_PATH=./ eslint --fix"
+    "lint": "NODE_PATH=./ eslint --ignore-path .gitignore server client universal",
+    "lint:fix": "NODE_PATH=./ eslint --ignore-path .gitignore --fix server client universal "
   },
   "dependencies": {
     "autoprefixer": "^6.5.3",

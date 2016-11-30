@@ -2,7 +2,7 @@ import {Router} from 'express';
 
 import {
   authHandler,
-  authCallbackHandler
+  authCallbackHandler,
 } from 'server/app/handlers/auth-handlers';
 import {applicationHandler} from 'server/app/handlers/application-handlers';
 
