@@ -11,9 +11,12 @@
     "watch:server": "nodemon --ignore client --ignore public --exec npm run build:server",
     "build:client": "NODE_PATH=./ gulp build",
     "watch:client": "NODE_PATH=./ gulp watch",
-    "lint": "NODE_PATH=./ eslint --ignore-path .gitignore server client universal",
+    "lint": "npm run lint:scripts && npm run lint:styles",
+    "lint:fix": "npm run lint:scripts:fix && npm run lint:styles && npm run lint:styles:sort:fix",
+    "lint:scripts": "NODE_PATH=./ eslint --ignore-path .gitignore server client universal",
     "lint:scripts:fix": "NODE_PATH=./ eslint --ignore-path .gitignore --fix server client universal",
-    "lint:styles:fix": "/postcss --use postcss-sorting -r client/**/*.css"
+    "lint:styles": "stylelint --config .stylelintrc client/**/*.css",
+    "lint:styles:sort:fix": "postcss --use postcss-sorting -r client/**/*.css"
   },
   "dependencies": {
     "autoprefixer": "^6.5.3",
@@ -51,6 +54,8 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "source": "^0.0.3",
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   }

@@ -1,15 +1,41 @@
-$color-primary-dark: #00bcd4;
-$color-primary: #80deea;
-$color-primary-light: #b2ebf2;
+$timing-basic: 100ms ease-out;
+$timing-slow: 200ms ease-out;
+$transition-time: 600ms;
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+$font-family: 'Noto Sans Japanese', sans-serif;
+$font-weight-normal: 200;
+$font-weight-bold: 400;
+$font-base-size: 16px;
+$radius: 2px;
+$border: solid 1px $color-divider;
 
-$color-accent: #fff;
+html {
+  color: $color-text;
+  font-weight: $font-weight-normal;
+  font-size: $font-base-size;
+  font-family: $font-family;
+}
 
-$color-text: #424242;
-$color-text-primary: #212121;
-$color-text-secondary: #9e9e9e;
+html,
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
 
-$color-divider: #e0e0e0;
-$color-background: #fff;
+.application {
+  width: 100%;
+  height: 100%;
 
-$color-ui-focus: #efefef;
-$color-ui-active: #ccc;
+  &-content {
+    width: 100%;
+    height: 100%;
+    background: $color-background;
+  }
+}
+
+.page-container {
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+}
