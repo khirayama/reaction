@@ -12,7 +12,8 @@
     "build:client": "NODE_PATH=./ gulp build",
     "watch:client": "NODE_PATH=./ gulp watch",
     "lint": "NODE_PATH=./ eslint --ignore-path .gitignore server client universal",
-    "lint:fix": "NODE_PATH=./ eslint --ignore-path .gitignore --fix server client universal "
+    "lint:scripts:fix": "NODE_PATH=./ eslint --ignore-path .gitignore --fix server client universal",
+    "lint:styles:fix": "/postcss --use postcss-sorting -r client/**/*.css"
   },
   "dependencies": {
     "autoprefixer": "^6.5.3",
@@ -42,9 +43,11 @@
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
     "plumber": "^0.4.8",
+    "postcss-cli": "^2.6.0",
     "postcss-easy-import": "^1.0.1",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^3.0.0",
+    "postcss-sorting": "^1.7.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "source": "^0.0.3",
