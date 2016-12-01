@@ -10,21 +10,17 @@ const config = {
 };
 
 export function setup() {
-  return (req, res, next) => {
-    passport.serializeUser((user, done) => {
-      done(null, user.id);
-    });
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
 
-    passport.deserializeUser((userId, done) => {
-      done(null, userId);
-    });
+  passport.deserializeUser((userId, done) => {
+    done(null, userId);
+  });
 
-    passport.use(new TwitterStrategy(config.twitter,
-      (token, tokenSecret, profile, done) => {
-        done(null, profile);
-      }
-    ));
-
-    next();
-  };
+  passport.use(new TwitterStrategy(config.twitter,
+    (token, tokenSecret, profile, done) => {
+      done(null, profile);
+    }
+  ));
 }

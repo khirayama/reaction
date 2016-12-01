@@ -11,6 +11,8 @@ import router from 'server/config/routes';
 
 const app = express();
 
+setupPassport();
+
 // middleware
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(useragent.express());
@@ -21,9 +23,12 @@ app.use(session({
   keys: ['secret-key'],
   name: '_reaction_session',
 }));
-app.use(setupPassport());
+
+// passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+// router
 app.use(router);
 
 app.listen(3000, () => {

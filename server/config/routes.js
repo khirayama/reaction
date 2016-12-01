@@ -20,6 +20,6 @@ router.use('/auth', new Router()
   .get('/:provider/callback', authCallbackHandler)
 );
 router.get('/app/*', authorize, applicationHandler);
-router.get('/*', applicationHandler);
+router.get('/', applicationHandler);
 
 export default router;
