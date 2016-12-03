@@ -2,6 +2,7 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 
+import i18n from 'universal/locales';
 import {unsubscribeAll} from 'universal/libs/micro-dispatcher';
 import Store from 'universal/store';
 import ApplicationContainer from 'universal/views/application-container';
@@ -33,6 +34,8 @@ function layout(content, state) {
 }
 
 export function applicationHandler(req, res) {
+  i18n.setLocale(req.getLocale());
+
   unsubscribeAll();
 
   const store = new Store();
@@ -41,5 +44,5 @@ export function applicationHandler(req, res) {
     res.send(layout(content, store.getState()));
   });
 
-  startApplication(req.path, req.useragent);
+  startApplication(req.path, req.useragent, req.getLocale());
 }

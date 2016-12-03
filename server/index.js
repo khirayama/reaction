@@ -23,6 +23,14 @@ app.use(session({
   keys: ['secret-key'],
   name: '_reaction_session',
 }));
+app.use((req, res, next) => {
+  // priority: query - setting - cookie - default
+  const locale = req.query.lang || req.cookies._reaction_locale || req.locale;
+
+  req.getLocale = () => locale;
+  res.cookie('_reaction_locale', locale);
+  next();
+});
 
 // passport
 app.use(passport.initialize());

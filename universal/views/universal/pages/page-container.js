@@ -4,6 +4,8 @@ import React from 'react';
 
 import MicroContainer from 'universal/libs/micro-container';
 
+import i18n from 'universal/locales';
+
 import HomePage from 'universal/views/universal/pages/home-page';
 import Link from 'universal/views/universal/components/link.js';
 
@@ -21,7 +23,7 @@ export default class PageContainer extends MicroContainer {
         return (
           <section className="page">
             <h1>Feeds</h1>
-            <Link href="/">to Top</Link>
+            <Link href="/">{i18n.t('toTop')}</Link>
           </section>
         );
       default:

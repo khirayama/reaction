@@ -9,6 +9,7 @@ export default class Store extends MicroStore {
     super();
 
     this.state = Object.assign({
+      locale: '',
       ui: '',
       pathname: '',
       title: '',
@@ -23,6 +24,7 @@ export default class Store extends MicroStore {
     subscribe(action => {
       switch (action.type) {
         case types.START_APP:
+          this.state.locale = action.locale;
           this.state.ui = action.ui;
           this.state.pathname = action.pathname;
 

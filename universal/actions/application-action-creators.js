@@ -104,12 +104,13 @@ function getUI(useragent) {
   return ui;
 }
 
-export function startApplication(pathname, useragent) {
+export function startApplication(pathname, useragent, locale) {
   initializePage(pathname);
   dispatch({
     type: types.START_APP,
     ui: getUI(useragent),
     pathname,
+    locale,
   });
 }
 
