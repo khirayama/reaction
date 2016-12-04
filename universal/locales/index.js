@@ -12,13 +12,8 @@ class I18n {
     this._import();
   }
   _import() {
-    this._locales.forEach((locale) => {
+    this._locales.forEach(locale => {
       const dictionaryPath = path.join(this._path, locale);
-
-      if (false) {
-        require('universal/locales/en');
-        require('universal/locales/ja');
-      }
 
       const dic = require(dictionaryPath);
       this._dictionary[locale] = dic;
@@ -45,4 +40,9 @@ export default new I18n({
   locales: ['en', 'ja'],
   defaultLocale: 'en',
   path: 'universal/locales',
+  // for browserify
+  requires: [
+    require('universal/locales/en'),
+    require('universal/locales/ja'),
+  ],
 });

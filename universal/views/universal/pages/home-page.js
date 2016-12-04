@@ -2,7 +2,7 @@ import React from 'react';
 
 import i18n from 'universal/locales';
 
-export default function HomePage(props) {
+export default function HomePage() {
   return (
     <section>
       <h1>Reaction</h1>
