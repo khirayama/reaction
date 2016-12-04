@@ -7,6 +7,7 @@ import MicroContainer from 'universal/libs/micro-container';
 import i18n from 'universal/locales';
 
 import HomePage from 'universal/views/universal/pages/home-page';
+import StyleguidePage from 'universal/views/universal/pages/styleguide-page';
 import Link from 'universal/views/universal/components/link.js';
 
 export default class PageContainer extends MicroContainer {
@@ -26,6 +27,8 @@ export default class PageContainer extends MicroContainer {
             <Link href="/">{i18n.t('toTop')}</Link>
           </section>
         );
+      case '/styleguide':
+        return <StyleguidePage state={state}/>;
       default:
         return (
           <section className="page">

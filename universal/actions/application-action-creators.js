@@ -84,8 +84,11 @@ function initializePage(pathname) {
       fetchPosts();
       fetchActivities();
       break;
-    case '/dashboard':
+    case '/app/dashboard':
       updateTitle('Dashboard');
+      break;
+    case '/styleguide':
+      updateTitle('Styleguide');
       break;
     default:
       updateTitle('Not Found');
