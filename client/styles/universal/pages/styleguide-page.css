@@ -1,0 +1,39 @@
+.styleguide-page {
+  .page-content {
+    max-width: 100%;
+    width: 620px;
+    margin: 64px auto;
+
+    h2 {
+      margin: 48px 0 8px;
+      border-bottom: $border;
+    }
+    h3 {
+      margin: 12px 0 8px;
+    }
+    h4 {
+      margin: 8px 0 4px;
+    }
+    ul {
+      li {
+        &:before {
+          content: '- ';
+        }
+      }
+    }
+    hr {
+      margin: 64px 0;
+      border: 0;
+      border-bottom: $border;
+    }
+  }
+
+  .texts-example {
+    h2,
+    h3,
+    h4{
+      border: 0;
+      margin: 0;
+    }
+  }
+}
