@@ -3,5 +3,13 @@
   "toTop": "to top",
   "home": {
     "description": "hello world"
+  },
+  "styleguide": {
+    "cssDesign": {
+      "context": "context",
+      "layout": "layout",
+      "skin": "skin",
+      "structure": "structure"
+    }
   }
 }
