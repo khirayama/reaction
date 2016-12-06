@@ -3,6 +3,7 @@ import {Router} from 'express';
 import {
   authHandler,
   authCallbackHandler,
+  logoutHandler,
 } from 'server/app/handlers/auth-handlers';
 import {applicationHandler} from 'server/app/handlers/application-handlers';
 
@@ -12,6 +13,7 @@ router.use('/auth', new Router()
   .get('/:provider', authHandler)
   .get('/:provider/callback', authCallbackHandler)
 );
+router.get('/logout', logoutHandler);
 router.get('/*', applicationHandler);
 
 export default router;

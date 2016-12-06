@@ -16,3 +16,8 @@ export function authCallbackHandler(req, res) {
 
   authenticate(req, res);
 }
+
+export function logoutHandler(req, res) {
+  req.logout();
+  res.redirect('/');
+}

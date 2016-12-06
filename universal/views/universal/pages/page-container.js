@@ -25,7 +25,7 @@ export default class PageContainer extends MicroContainer {
         return (
           <section className="page">
             <h1>Feeds</h1>
-            <Link href="/">top</Link>
+            <a href="/logout">logout</a>
           </section>
         );
       case '/styleguide':
@@ -37,7 +37,7 @@ export default class PageContainer extends MicroContainer {
         return (
           <section className="page">
             <h1>Not Found</h1>
-            <Link href="/">to top</Link>
+            <Link href="/">top</Link>
           </section>
         );
     }
