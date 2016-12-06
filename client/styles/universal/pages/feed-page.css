@@ -1,0 +1,60 @@
+.feed-page {
+}
+.application-header {
+  position: relative;
+  height: 44px;
+  max-width: 100%;
+  width: 680px;
+  margin: 0 auto;
+  .setting-link {
+    position: absolute;
+    left: 0;
+    padding: 8px;
+    .setting-link-content {
+      width: 28px;
+      height: 28px;
+      border-radius: 14px;
+      background-color: #ddd;
+    }
+  }
+  .search-button-container {
+    position: absolute;
+    right: 0;
+    .search-button {
+      font-size: 20px;
+      padding: 8px;
+    }
+  }
+}
+.feed {
+  max-width: 100%;
+  width: 680px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.feed-tab {
+  display: flex;
+  box-shadow: 0 1px 1px 1px rgba(224, 224, 224, 0.4);
+  .feed-tab-item {
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    padding: 8px 0;
+    color: $color-text-secondary;
+    cursor: pointer;
+    &__active {
+      position: relative;
+      box-shadow: 0 -4px 0 0 $color-primary inset;
+      &:after {
+        position: absolute;
+        top: calc(50% - 12px);
+        left: calc(50% + 8px);
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

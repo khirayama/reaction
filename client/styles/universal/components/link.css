@@ -25,3 +25,7 @@
     padding: 8px;
   }
 }
+
+.link__plain {
+  padding: 0;
+}

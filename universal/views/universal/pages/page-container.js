@@ -7,6 +7,7 @@ import MicroContainer from 'universal/libs/micro-container';
 import i18n from 'universal/locales';
 
 import HomePage from 'universal/views/universal/pages/home-page';
+import FeedPage from 'universal/views/universal/pages/feed-page';
 import StyleguidePage from 'universal/views/universal/pages/styleguide-page';
 import Link from 'universal/views/universal/components/link.js';
 
@@ -22,12 +23,7 @@ export default class PageContainer extends MicroContainer {
         if (!state.isAuthenticated) {
           return <HomePage state={state}/>;
         }
-        return (
-          <section className="page">
-            <h1>Feeds</h1>
-            <a href="/logout">logout</a>
-          </section>
-        );
+        return <FeedPage state={state}/>;
       case '/styleguide':
         if (!state.isAuthenticated) {
           return <HomePage state={state}/>;

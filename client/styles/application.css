@@ -52,3 +52,15 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.icon {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-size: inherit;
+  text-rendering: optimizeLegibility;
+  font-smoothing: antialiased;
+  font-feature-settings: 'liga';
+  vertical-align: text-bottom;
+  display: inline-block;
+  width: 1em;
+}
