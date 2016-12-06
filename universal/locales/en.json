@@ -1,8 +1,6 @@
 {
-	"description": "description",
-  "toTop": "to top",
   "home": {
-    "description": "hello world"
+    "description": "Sign up to see reactions from your friends."
   },
   "styleguide": {
     "cssDesign": {

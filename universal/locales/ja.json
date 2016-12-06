@@ -1,8 +1,6 @@
 {
-	"description": "説明文",
-  "toTop": "トップページへ",
   "home": {
-    "description": "こんにちわ、世界"
+    "description": "友達のリアクションを見てみよう"
   },
   "styleguide": {
     "cssDesign": {

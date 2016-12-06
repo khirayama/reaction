@@ -1,8 +1,9 @@
-$timing-basic: 100ms ease-out;
-$timing-slow: 200ms ease-out;
-$transition-time: 600ms;
-
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+$timing-fast: 100ms $ease-out-expo;
+$timing-basic: 200ms $ease-out-expo;
+$timing-slow: 400ms $ease-out-expo;
+$transition-time: 600ms;
 
 $font-family: 'Noto Sans Japanese', sans-serif;
 $font-weight-normal: 200;
@@ -14,6 +15,7 @@ $border: solid 1px $color-divider;
 
 html {
   color: $color-text;
+  text-align: justify;
   font-weight: $font-weight-normal;
   font-size: $font-base-size;
   font-family: $font-family;
