@@ -59,6 +59,7 @@ export default function StyleguidePage() {
             <ul>
               <li>{i18n.t('styleguide.userInterfaceDesign.rules.depth')}</li>
               <li>{i18n.t('styleguide.userInterfaceDesign.rules.routing')}</li>
+              <li>{i18n.t('styleguide.userInterfaceDesign.rules.functions')}</li>
             </ul>
           </section>
         </section>
@@ -82,37 +83,50 @@ export default function StyleguidePage() {
             <h2>Buttons</h2>
             <h3>Pattarns</h3>
             <ul>
-              <li>Floatin button: command controll</li>
-              <li>Flat button: query controll</li>
-              <li>Icon button: command controll</li>
+              <li>
+                {i18n.t('styleguide.buttons.patterns.floating')}
+                <br/>
+                {i18n.t('styleguide.buttons.patterns.floatingDescription')}
+              </li>
+              <li>
+                {i18n.t('styleguide.buttons.patterns.flat')}
+                <br/>
+                {i18n.t('styleguide.buttons.patterns.flatDescription')}
+              </li>
+              <li>
+                {i18n.t('styleguide.buttons.patterns.icon')}
+                <br/>
+                {i18n.t('styleguide.buttons.patterns.iconDescription')}
+              </li>
             </ul>
             <h3>Rules</h3>
             <ul>
-              <li>Use verb for label.</li>
-              <li>Minimum size 44px * 44px.</li>
-              <li>Use upper case.</li>
-              <li>There are 2 size. inline or spread.</li>
+              <li>{i18n.t('styleguide.buttons.rules.label')}</li>
+              <li>{i18n.t('styleguide.buttons.rules.minSize')}</li>
+              <li>{i18n.t('styleguide.buttons.rules.size')}</li>
+              <li>{i18n.t('styleguide.buttons.rules.text')}</li>
             </ul>
           </section>
           <section>
             <h2>Links</h2>
             <h3>Rules</h3>
             <ul>
-              <li>Use camel case.</li>
+              <li>{i18n.t('styleguide.links.rules.text')}</li>
             </ul>
           </section>
           <section>
             <h2>Tabs</h2>
             <h3>Rules</h3>
             <ul>
-              <li>Use camel case or icon.</li>
+              <li>{i18n.t('styleguide.tabs.rules.text')}</li>
+              <li>{i18n.t('styleguide.tabs.rules.icon')}</li>
             </ul>
           </section>
           <section>
             <h2>Modals</h2>
             <h3>Rules</h3>
             <ul>
-              <li>Use it to keep user controll context.</li>
+              <li>{i18n.t('styleguide.modals.rules.context')}</li>
             </ul>
           </section>
         </section>
