@@ -11,6 +11,9 @@ class I18n {
 
     this._import();
   }
+  get defaultLocale() {
+    return this._defaultLocale;
+  }
   _import() {
     this._locales.forEach(locale => {
       const dictionaryPath = path.join(this._path, locale);

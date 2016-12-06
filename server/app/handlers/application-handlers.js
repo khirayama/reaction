@@ -44,5 +44,10 @@ export function applicationHandler(req, res) {
     res.send(layout(content, store.getState()));
   });
 
-  startApplication(req.path, req.useragent, req.getLocale());
+  startApplication(
+    req.path,
+    req.useragent,
+    req.getLocale(),
+    req.isAuthenticated()
+  );
 }

@@ -13,6 +13,7 @@ export default class Store extends MicroStore {
       ui: '',
       pathname: '',
       title: '',
+      isAuthenticated: false,
 
       posts: null,
       activities: null,
@@ -27,6 +28,7 @@ export default class Store extends MicroStore {
           this.state.locale = action.locale;
           this.state.ui = action.ui;
           this.state.pathname = action.pathname;
+          this.state.isAuthenticated = action.isAuthenticated;
 
           this._dispatchReady();
           break;

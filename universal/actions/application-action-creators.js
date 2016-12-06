@@ -107,13 +107,14 @@ function getUI(useragent) {
   return ui;
 }
 
-export function startApplication(pathname, useragent, locale) {
+export function startApplication(pathname, useragent, locale, isAuthenticated) {
   initializePage(pathname);
   dispatch({
     type: types.START_APP,
     ui: getUI(useragent),
     pathname,
     locale,
+    isAuthenticated,
   });
 }
 

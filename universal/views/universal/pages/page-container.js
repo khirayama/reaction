@@ -19,15 +19,19 @@ export default class PageContainer extends MicroContainer {
 
     switch (state.pathname) {
       case '/':
-        return <HomePage state={state}/>;
-      case '/app/dashboard':
+        if (!state.isAuthenticated) {
+          return <HomePage state={state}/>;
+        }
         return (
           <section className="page">
             <h1>Feeds</h1>
-            <Link href="/">{i18n.t('toTop')}</Link>
+            <Link href="/">top</Link>
           </section>
         );
       case '/styleguide':
+        if (!state.isAuthenticated) {
+          return <HomePage state={state}/>;
+        }
         return <StyleguidePage state={state}/>;
       default:
         return (

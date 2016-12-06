@@ -6,6 +6,8 @@ import session from 'cookie-session';
 import passport from 'passport';
 import useragent from 'express-useragent';
 
+import i18n from 'universal/locales';
+
 import {setup as setupPassport} from 'server/config/passport';
 import router from 'server/config/routes';
 
@@ -25,7 +27,7 @@ app.use(session({
 }));
 app.use((req, res, next) => {
   // priority: query - setting - cookie - default
-  const locale = req.query.lang || req.cookies._reaction_locale || req.locale;
+  const locale = req.query.lang || req.cookies._reaction_locale || req.locale || i18n.defaultLocale;
 
   req.getLocale = () => locale;
   res.cookie('_reaction_locale', locale);
