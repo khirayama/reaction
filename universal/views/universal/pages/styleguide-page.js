@@ -12,19 +12,35 @@ export default function StyleguidePage() {
         <section>
           <h2>CSS design</h2>
           <ul>
-            <li>{i18n.t('styleguide.cssDesign.context')}</li>
-            <li>{i18n.t('styleguide.cssDesign.layout')}</li>
-            <li>{i18n.t('styleguide.cssDesign.skin')}</li>
-            <li>{i18n.t('styleguide.cssDesign.structure')}</li>
+            <li>
+              {i18n.t('styleguide.cssDesign.context')}
+              <br/>
+              {i18n.t('styleguide.cssDesign.contextDescription')}
+            </li>
+            <li>
+              {i18n.t('styleguide.cssDesign.layout')}
+              <br/>
+              {i18n.t('styleguide.cssDesign.layoutDescription')}
+            </li>
+            <li>
+              {i18n.t('styleguide.cssDesign.skin')}
+              <br/>
+              {i18n.t('styleguide.cssDesign.skinDescription')}
+            </li>
+            <li>
+              {i18n.t('styleguide.cssDesign.structure')}
+              <br/>
+              {i18n.t('styleguide.cssDesign.structureDescription')}
+            </li>
           </ul>
         </section>
         <section>
           <h2>Sizing Rules</h2>
           <ul>
-            <li>inline or spread</li>
-            <li>margin size: 4px</li>
-            <li>padding size: 4px</li>
-            <li>raidus size: 2px</li>
+            <li>{i18n.t('styleguide.sizingRules.size')}</li>
+            <li>{i18n.t('styleguide.sizingRules.margin')}</li>
+            <li>{i18n.t('styleguide.sizingRules.padding')}</li>
+            <li>{i18n.t('styleguide.sizingRules.radius')}</li>
           </ul>
         </section>
         <section>
@@ -41,8 +57,8 @@ export default function StyleguidePage() {
           <section>
             <h3>Rules</h3>
             <ul>
-              <li>Avoid nested page. 1 Depth is better.</li>
-              <li>Match desktop and mobile routing.</li>
+              <li>{i18n.t('styleguide.userInterfaceDesign.rules.depth')}</li>
+              <li>{i18n.t('styleguide.userInterfaceDesign.rules.routing')}</li>
             </ul>
           </section>
         </section>

@@ -6,10 +6,26 @@
   },
   "styleguide": {
     "cssDesign": {
-      "context": "コンテキスト - 環境を引き継ぐ。resetやbaseの値、UIの差異（mobile、desktop）はコンテキストとみなす。",
-      "layout": "レイアウト - skin + structureで作られたコンポーネントのサイズと配置を担う。",
-      "skin": "スキン - コンポーネントの状態を担う。カラーやフォント、余白など",
-      "structure": "ストラクチャ - コンポーネントの構造を担う。コンポーネントの根幹であり、デフォルトの状態（デフォルトのスキン）も持つ。"
+      "context": "コンテキスト",
+      "contextDescription": "環境を引き継ぐ。resetやbaseの値、UIの差異（mobile、desktop）はコンテキストとみなす。",
+      "layout": "レイアウト",
+      "layoutDescription": "skin + structureで作られたコンポーネントのサイズと配置を担う。",
+      "skin": "スキン",
+      "skinDescription": "コンポーネントの状態を担う。カラーやフォント、余白など",
+      "structure": "ストラクチャ",
+      "structureDescription": "コンポーネントの構造を担う。コンポーネントの根幹であり、デフォルトの状態（デフォルトのスキン）も持つ。"
+    },
+    "sizingRules": {
+      "size": "インライン（コンテンツに従う）か100%（いっぱいに広がる）のstructureしか持たない。固定のサイズが必要な場合は、Layoutでサイズを指定し、100%にする。",
+      "margin": "marginは4の倍数とする。",
+      "padding": "paddingは4の倍数とする。",
+      "radius": "radiusは特別なケースを除き2pxとする。"
+    },
+    "userInterfaceDesign": {
+      "rules": {
+        "depth": "ページの階層は1階層が理想である。深い階層構造はできる限り避ける。",
+        "routing": "デスクトップとモバイルでURLを合わせることが望ましい。"
+      }
     }
   }
 }
