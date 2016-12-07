@@ -48,12 +48,38 @@ class FeedTab extends React.Component {
 
 class FeedList extends React.Component {
   render() {
-    let listItems = [];
-    for (let index = 0; index < 100; index++) {
-      listItems.push(<li key={index} className="feed-list-item">Feed {index}</li>);
+    let items = [];
+    for (let index = 0; index < 1000; index++) {
+      items.push({id: index, title: `Feed ${index}`});
     }
     return (
-      <ul className="feed-list">{listItems}</ul>
+      <ul className="feed-list">{items.map((item) => <FeedListItem key={item.id} feed={item}/>)}</ul>
+    );
+  }
+}
+
+class FeedListItem extends React.Component {
+  render() {
+    const feed = this.props.feed;
+
+    return (
+      <li className="feed-list-item">
+        <span className="feed-list-item-title">{feed.title}</span>
+        <ReactionList />
+      </li>
+    );
+  }
+}
+
+class ReactionList extends React.Component {
+  render() {
+    return (
+      <ul className="reaction-list">
+        <li className="reaction-list-item"><i className="icon">favorite</i></li>
+        <li className="reaction-list-item"><i className="icon">comment</i></li>
+        <li className="reaction-list-item"><i className="icon">watch_later</i></li>
+        <li className="reaction-list-item"><i className="icon">bookmark</i></li>
+      </ul>
     );
   }
 }
