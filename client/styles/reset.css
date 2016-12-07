@@ -40,6 +40,7 @@ i {
   font-size: inherit;
   line-height: 1.4;
   font-feature-settings: "palt";
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 ul {

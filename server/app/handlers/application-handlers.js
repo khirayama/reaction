@@ -25,7 +25,7 @@ function layout(content, state) {
         <link rel="stylesheet" href="/index.css">
         <script src="/bundle.js" defer></script>
       </head>
-      <body class='${state.ui}'>
+      <body>
         <section class="application">${content}</section>
       </body>
       <script>var state = ${JSON.stringify(state)}</script>

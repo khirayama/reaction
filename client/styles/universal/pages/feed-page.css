@@ -1,11 +1,22 @@
 .feed-page {
+  .page-content {
+    position: relative;
+    max-width: 100%;
+    width: 680px;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 44px;
+  }
 }
+
 .application-header {
-  position: relative;
-  height: 44px;
-  max-width: 100%;
-  width: 680px;
-  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  z-index: 1;
+  background-color: $color-white;
   .setting-link {
     position: absolute;
     left: 0;
@@ -21,20 +32,25 @@
     position: absolute;
     right: 0;
     .search-button {
-      font-size: 20px;
-      padding: 8px;
+      font-size: 24px;
+      width: 44px;
+      height: 44px;
     }
   }
 }
+
 .feed {
-  max-width: 100%;
-  width: 680px;
-  margin: 0 auto;
-  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $color-white;
 }
 .feed-tab {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 52px;
   display: flex;
-  box-shadow: 0 1px 1px 1px rgba(224, 224, 224, 0.4);
   .feed-tab-item {
     flex: 1;
     text-align: center;
@@ -42,12 +58,15 @@
     padding: 8px 0;
     color: $color-text-secondary;
     cursor: pointer;
+    &:active {
+      background-color: $color-ui-active;
+    }
     &__active {
       position: relative;
       box-shadow: 0 -4px 0 0 $color-primary inset;
       &:after {
         position: absolute;
-        top: calc(50% - 12px);
+        top: calc(50% - 16px);
         left: calc(50% + 8px);
         content: '';
         width: 8px;
@@ -56,5 +75,28 @@
         background-color: $color-primary;
       }
     }
+  }
+}
+
+.desktop {
+  .feed {
+    padding-top: 52px;
+  }
+  .feed-tab {
+    top: 0;
+    border-bottom: $border;
+  }
+}
+
+.mobile {
+  .feed {
+    padding-bottom: 52px;
+  }
+  .application-header {
+    border-bottom: $border;
+  }
+  .feed-tab {
+    bottom: 0;
+    border-top: $border;
   }
 }

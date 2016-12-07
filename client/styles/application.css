@@ -63,4 +63,13 @@ body {
   vertical-align: text-bottom;
   display: inline-block;
   width: 1em;
+  overflow: hidden;
+}
+
+.size__inline {
+  width: auto;
+}
+
+.size__spread {
+  width: 100%;
 }

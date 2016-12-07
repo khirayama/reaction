@@ -59,8 +59,10 @@ class FeedList extends React.Component {
 export default function FeedPage() {
   return (
     <section className="page feed-page">
-      <ApplicationHeader />
-      <FeedContainer />
+      <section className="page-content">
+        <ApplicationHeader />
+        <FeedContainer />
+      </section>
     </section>
   );
 }
