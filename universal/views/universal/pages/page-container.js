@@ -1,15 +1,15 @@
 /* eslint-env browser */
 
-import React from 'react';
+const createElement = require('react').createElement;
 
-import MicroContainer from 'universal/libs/micro-container';
+const MicroContainer = require('universal/libs/micro-container');
 
-import HomePage from 'universal/views/universal/pages/home-page';
-import FeedPage from 'universal/views/universal/pages/feed-page';
-import StyleguidePage from 'universal/views/universal/pages/styleguide-page';
-import Link from 'universal/views/universal/components/link.js';
+const HomePage = require('universal/views/universal/pages/home-page');
+const FeedPage = require('universal/views/universal/pages/feed-page');
+const StyleguidePage = require('universal/views/universal/pages/styleguide-page');
+const Link = require('universal/views/universal/components/link.js');
 
-export default class PageContainer extends MicroContainer {
+class PageContainer extends MicroContainer {
   _updateTitle(title) {
     window.document.title = title;
   }
@@ -19,20 +19,18 @@ export default class PageContainer extends MicroContainer {
     switch (state.pathname) {
       case '/':
         if (!state.isAuthenticated) {
-          return <HomePage state={state}/>;
+          return createElement(HomePage, {state});
         }
-        return <FeedPage state={state}/>;
+        return createElement(FeedPage, {state});
       case '/styleguide':
         if (!state.isAuthenticated) {
-          return <HomePage state={state}/>;
+          return createElement(HomePage, {state});
         }
-        return <StyleguidePage state={state}/>;
+        return createElement(StyleguidePage, {state});
       default:
-        return (
-          <section className="page">
-            <h1>Not Found</h1>
-            <Link href="/">top</Link>
-          </section>
+        return createElement('section', {className: 'page'},
+          createElement('h1', null, 'Not found.'),
+          createElement(Link, {href: '/'}, 'top')
         );
     }
   }
@@ -44,8 +42,10 @@ export default class PageContainer extends MicroContainer {
       this._updateTitle(state.title);
     }
 
-    return <section className="page-container">{pageElement}</section>;
+    return createElement('section', {className: "page-container"}, pageElement);
   }
 }
 
 PageContainer.propTypes = {};
+
+module.exports = PageContainer;

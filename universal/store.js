@@ -1,10 +1,10 @@
-import types from 'universal/constants/action-types';
-import {subscribe} from 'universal/libs/micro-dispatcher';
-import MicroStore from 'universal/libs/micro-store';
+const types = require('universal/constants/action-types');
+const subscribe = require('universal/libs/micro-dispatcher').subscribe;
+const MicroStore = require('universal/libs/micro-store');
 
 const READY_APPLICATION = '__READY_APPLICATION';
 
-export default class Store extends MicroStore {
+class Store extends MicroStore {
   constructor(state) {
     super();
 
@@ -62,3 +62,5 @@ export default class Store extends MicroStore {
     this.addListener(READY_APPLICATION, callback);
   }
 }
+
+module.exports = Store;

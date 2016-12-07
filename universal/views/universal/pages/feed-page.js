@@ -1,99 +1,103 @@
-import React from 'react';
+const Component = require('react').Component;
+const PropTypes = require('react').PropTypes;
+const createElement = require('react').createElement;
 
-import Link from 'universal/views/universal/components/link';
-import IconButton from 'universal/views/universal/components/icon-button';
+const Link = require('universal/views/universal/components/link');
+const IconButton = require('universal/views/universal/components/icon-button');
 
-class ApplicationHeader extends React.Component {
+class ApplicationHeader extends Component {
   render() {
-    return (
-      <section className="application-header">
-        <Link href="/setting" className="setting-link link__plain">
-          <div className="setting-link-content"/>
-        </Link>
-        <div className="search-button-container">
-          <IconButton className="search-button">search</IconButton>
-        </div>
-      </section>
+    return createElement('section', { className: 'application-header' },
+      createElement(Link, {
+        href: '/setting',
+        className: 'setting-link link__plain'
+      },
+        createElement('div', { className: 'setting-link-content' })
+      ),
+      createElement('div', { className: 'search-button-container' },
+        createElement(IconButton, { className: 'search-button' }, 'search')
+      )
     );
   }
 }
 
-class FeedContainer extends React.Component {
+class FeedContainer extends Component {
   render() {
-    return (
-      <section className="feed">
-        <FeedTab/>
-        <section className="feed-list-container">
-          <FeedList/>
-        </section>
-      </section>
+    return createElement('section', { className: 'feed' },
+      createElement(FeedTab, null),
+      createElement('section',{ className: 'feed-list-container' },
+        createElement(FeedList, null)
+      )
     );
   }
 }
 
-class FeedTab extends React.Component {
+class FeedTab extends Component {
   render() {
-    return (
-      <ul className="feed-tab">
-        <li className="feed-tab-item feed-tab-item__active">
-          <i className="icon">library_books</i>
-        </li>
-        <li className="feed-tab-item">
-          <i className="icon">question_answer</i>
-        </li>
-      </ul>
+    return createElement('ul', { className: 'feed-tab' },
+      createElement('li',{ className: 'feed-tab-item feed-tab-item__active' },
+        createElement('i', { className: 'icon' },'library_books')
+      ),
+      createElement('li',{ className: 'feed-tab-item' },
+        createElement('i',{ className: 'icon' },'question_answer')
+      )
     );
   }
 }
 
-class FeedList extends React.Component {
+class FeedList extends Component {
   render() {
     const items = [];
     for (let index = 0; index < 1000; index++) {
       items.push({id: index, title: `Feed ${index}`});
     }
-    return (
-      <ul className="feed-list">{items.map(item => <FeedListItem key={item.id} feed={item}/>)}</ul>
+    return createElement('ul',{ className: 'feed-list' },
+      items.map((item) => createElement(FeedListItem, { key: item.id, feed: item }))
     );
   }
 }
 
-class FeedListItem extends React.Component {
+class FeedListItem extends Component {
   render() {
     const feed = this.props.feed;
 
-    return (
-      <li className="feed-list-item">
-        <span className="feed-list-item-title">{feed.title}</span>
-        <ReactionList/>
-      </li>
+    return createElement('li',{ className: 'feed-list-item' },
+      createElement('span',{ className: 'feed-list-item-title' },feed.title),
+      createElement(ReactionList, null)
     );
   }
 }
 FeedListItem.propTypes = {
-  feed: React.PropTypes.object.isRequired,
+  feed: PropTypes.object.isRequired,
 };
 
-class ReactionList extends React.Component {
+class ReactionList extends Component {
   render() {
-    return (
-      <ul className="reaction-list">
-        <li className="reaction-list-item"><i className="icon">favorite</i></li>
-        <li className="reaction-list-item"><i className="icon">comment</i></li>
-        <li className="reaction-list-item"><i className="icon">watch_later</i></li>
-        <li className="reaction-list-item"><i className="icon">bookmark</i></li>
-      </ul>
+    return createElement('ul', { className: 'reaction-list' },
+      createElement('li',{ className: 'reaction-list-item' },
+        createElement('i',{ className: 'icon' },'favorite')
+      ),
+      createElement('li',{ className: 'reaction-list-item' },
+        createElement('i',{ className: 'icon' },'comment')
+      ),
+      createElement('li',{ className: 'reaction-list-item' },
+        createElement('i',{ className: 'icon' },'watch_later')
+      ),
+      createElement('li',{ className: 'reaction-list-item' },
+        createElement('i',{ className: 'icon' },'bookmark'
+        )
+      )
     );
   }
 }
 
-export default function FeedPage() {
-  return (
-    <section className="page feed-page">
-      <section className="page-content">
-        <ApplicationHeader/>
-        <FeedContainer/>
-      </section>
-    </section>
+function FeedPage() {
+  return createElement('section',{ className: 'page feed-page' },
+    createElement('section',{ className: 'page-content' },
+      createElement(ApplicationHeader, null),
+      createElement(FeedContainer, null)
+    )
   );
 }
+
+module.exports = FeedPage;

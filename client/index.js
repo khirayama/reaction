@@ -1,14 +1,14 @@
 /* eslint-env browser */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+const React = require('react');
+const ReactDOM = require('react-dom');
 
-import Store from 'universal/store';
+const Store = require('universal/store');
 
-import ApplicationContainer from 'universal/views/application-container';
+const ApplicationContainer = require('universal/views/application-container');
 
-import i18n from 'universal/locales';
-import {changeLocation} from 'universal/actions/application-action-creators';
+const i18n = require('universal/locales');
+const changeLocation = require('universal/actions/application-action-creators').changeLocation;
 
 window.addEventListener('popstate', () => {
   changeLocation(location.pathname, false);

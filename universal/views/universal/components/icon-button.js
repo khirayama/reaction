@@ -1,7 +1,11 @@
-import React, {PropTypes} from 'react';
+const PropTypes = require('react').PropTypes;
+const createElement = require('react').createElement;
 
-export default function IconButton(props) {
-  return <button {...props} className={`icon-button ${props.className || ''}`}>{props.children}</button>;
+function IconButton(props) {
+  const props_ = Object.assign({}, props, {
+    className: `icon-button ${props.className || ''}`
+  });
+  return createElement('button', props_, props.children);
 }
 
 IconButton.defaultProps = {
@@ -12,3 +16,5 @@ IconButton.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
+
+module.exports = IconButton;

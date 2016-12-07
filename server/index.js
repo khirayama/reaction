@@ -1,15 +1,15 @@
-import path from 'path';
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import session from 'cookie-session';
-import passport from 'passport';
-import useragent from 'express-useragent';
+const path = require('path');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('cookie-session');
+const passport = require('passport');
+const useragent = require('express-useragent');
 
-import i18n from 'universal/locales';
+const i18n = require('universal/locales');
 
-import {setup as setupPassport} from 'server/config/passport';
-import router from 'server/config/routes';
+const setupPassport = require('server/config/passport').setup;
+const router = require('server/config/routes');
 
 const app = express();
 

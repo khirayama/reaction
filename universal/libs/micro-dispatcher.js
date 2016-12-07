@@ -1,19 +1,23 @@
-import {EventEmitter} from 'events';
+const EventEmitter = require('events').EventEmitter;
 
 const ACTION_DISPATCH = '__ACTION_DISPATCH';
 
 const dispatcher = new EventEmitter();
 
-export function dispatch(action) {
+function dispatch(action) {
   dispatcher.emit(ACTION_DISPATCH, action);
 }
 
-export function subscribe(callback) {
+function subscribe(callback) {
   dispatcher.addListener(ACTION_DISPATCH, callback);
 }
 
-export function unsubscribeAll() {
+function unsubscribeAll() {
   dispatcher.removeAllListeners();
 }
 
-export default dispatcher;
+module.exports = {
+  dispatch,
+  subscribe,
+  unsubscribeAll
+};

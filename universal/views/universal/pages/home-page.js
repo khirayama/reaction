@@ -1,21 +1,28 @@
-import React from 'react';
+const createElement = require('react').createElement;
 
-import i18n from 'universal/locales';
+const i18n = require('universal/locales');
 
-export default function HomePage() {
-  return (
-    <section className="page home-page">
-      <header>
-        <h1>Reaction</h1>
-        <p>{i18n.t('home.description')}</p>
-        <a href="/auth/twitter">Login with Twitter</a>
-      </header>
-      <div className="lang-list-container">
-        <ul className="lang-list">
-          <li><a href="?lang=en"><small>English</small></a></li>
-          <li><a href="?lang=ja"><small>日本語</small></a></li>
-        </ul>
-      </div>
-    </section>
+function HomePage() {
+  return createElement('section', {
+    className: "page home-page",
+  },
+    createElement('header', null,
+      createElement('h1', null, 'Reaction'),
+      createElement('p', null, i18n.t('home.description')),
+      createElement('a', {href: '/auth/twitter'}, 'Login with Twitter')
+    ), createElement('div', {className: 'lang-list-container'},
+      createElement('ul', {className: 'lang-list'},
+        createElement('li', null,
+          createElement('a', {href: '?lang=en'},
+            createElement('small', null, 'English'))
+        ),
+        createElement('li', null,
+          createElement('a', {href: '?lang=ja'},
+            createElement('small', null, '日本語'))
+        )
+      )
+    )
   );
 }
+
+module.exports = HomePage;
