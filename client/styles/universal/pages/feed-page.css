@@ -6,6 +6,10 @@
     height: 100%;
     margin: 0 auto;
     padding-top: 44px;
+    .feed-list-container {
+      height: 100%;
+      overflow: scroll;
+    }
   }
 }
 
@@ -74,6 +78,15 @@
         border-radius: 50%;
         background-color: $color-primary;
       }
+    }
+  }
+}
+.feed-list {
+  .feed-list-item {
+    border-bottom: $border;
+    padding: 12px;
+    &:last-of-type {
+      border-bottom: 0;
     }
   }
 }

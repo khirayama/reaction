@@ -23,7 +23,9 @@ class FeedContainer extends React.Component {
     return (
       <section className="feed">
         <FeedTab/>
-        <FeedList/>
+        <section className="feed-list-container">
+          <FeedList/>
+        </section>
       </section>
     );
   }
@@ -46,12 +48,12 @@ class FeedTab extends React.Component {
 
 class FeedList extends React.Component {
   render() {
+    let listItems = [];
+    for (let index = 0; index < 100; index++) {
+      listItems.push(<li key={index} className="feed-list-item">Feed {index}</li>);
+    }
     return (
-      <ul className="feed-list">
-        <li>Feed 1</li>
-        <li>Feed 2</li>
-        <li>Feed 3</li>
-      </ul>
+      <ul className="feed-list">{listItems}</ul>
     );
   }
 }
