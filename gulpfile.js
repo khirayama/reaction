@@ -19,11 +19,9 @@ const options = {
   scripts: {
     browserify: {
       entries: [`${SRC_ROOT}/index.js`],
-      transform: ['babelify'],
     },
     watchify: {
       entries: [`${SRC_ROOT}/index.js`],
-      transform: ['babelify'],
       debug: true,
       cache: {},
       packageCache: {},

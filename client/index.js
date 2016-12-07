@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-const React = require('react');
+const createElement = require('react').createElement;
 const ReactDOM = require('react-dom');
 
 const Store = require('universal/store');
@@ -19,5 +19,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const store = new Store(window.state);
 
-  ReactDOM.render(<ApplicationContainer store={store}/>, document.querySelector('.application'));
+  ReactDOM.render(createElement(ApplicationContainer, {store}), document.querySelector('.application'));
 });
