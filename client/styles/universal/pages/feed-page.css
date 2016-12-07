@@ -23,6 +23,7 @@
   height: 45px;
   z-index: 1;
   background-color: $color-white;
+  user-select: none;
 
   .setting-link {
     position: absolute;
@@ -69,6 +70,7 @@
     padding: 4px 0;
     color: $color-text-secondary;
     cursor: pointer;
+    user-select: none;
 
     &:active {
       background-color: $color-ui-active;
@@ -112,6 +114,7 @@
 .reaction-list {
   padding: 0 8px;
   color: $color-divider;
+  user-select: none;
 
   .reaction-list-item {
     display: inline-block;

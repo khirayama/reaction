@@ -4,8 +4,6 @@ import React from 'react';
 
 import MicroContainer from 'universal/libs/micro-container';
 
-import i18n from 'universal/locales';
-
 import HomePage from 'universal/views/universal/pages/home-page';
 import FeedPage from 'universal/views/universal/pages/feed-page';
 import StyleguidePage from 'universal/views/universal/pages/styleguide-page';

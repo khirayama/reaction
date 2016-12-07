@@ -54,16 +54,15 @@ body {
 }
 
 .icon {
-  font-family: 'Material Icons';
+  display: inline-block;
+  overflow: hidden;
+  width: 1em;
+  vertical-align: text-bottom;
   font-style: normal;
   font-size: inherit;
+  font-family: 'Material Icons';
   text-rendering: optimizeLegibility;
-  font-smoothing: antialiased;
   font-feature-settings: 'liga';
-  vertical-align: text-bottom;
-  display: inline-block;
-  width: 1em;
-  overflow: hidden;
 }
 
 .size__inline {
