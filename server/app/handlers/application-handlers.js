@@ -1,12 +1,12 @@
 // universal
-const createElement = require('react').createElement;
-const renderToString = require('react-dom/server').renderToString;
+const {createElement} = require('react');
+const {renderToString} = require('react-dom/server');
 
 const i18n = require('universal/locales');
 const Store = require('universal/store');
 const ApplicationContainer = require('universal/views/application-container');
-const startApplication = require('universal/actions/application-action-creators').startApplication;
-const unsubscribeAll = require('universal/libs/micro-dispatcher').unsubscribeAll;
+const {startApplication} = require('universal/actions/application-action-creators');
+const {unsubscribeAll} = require('universal/libs/micro-dispatcher');
 
 function layout(content, state) {
   return `

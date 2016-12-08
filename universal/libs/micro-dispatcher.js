@@ -1,4 +1,4 @@
-const EventEmitter = require('events').EventEmitter;
+const {EventEmitter} = require('events');
 
 const ACTION_DISPATCH = '__ACTION_DISPATCH';
 
@@ -19,5 +19,5 @@ function unsubscribeAll() {
 module.exports = {
   dispatch,
   subscribe,
-  unsubscribeAll
+  unsubscribeAll,
 };

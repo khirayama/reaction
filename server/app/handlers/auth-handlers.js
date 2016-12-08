@@ -26,4 +26,4 @@ module.exports = {
   authHandler,
   authCallbackHandler,
   logoutHandler,
-}
+};

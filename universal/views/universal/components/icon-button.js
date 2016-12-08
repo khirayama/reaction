@@ -1,11 +1,11 @@
-const PropTypes = require('react').PropTypes;
-const createElement = require('react').createElement;
+const {createElement, PropTypes} = require('react');
+const classNames = require('classnames');
+const jsx = require('universal/libs/jsx-template');
 
 function IconButton(props) {
-  const props_ = Object.assign({}, props, {
-    className: `icon-button ${props.className || ''}`
-  });
-  return createElement('button', props_, props.children);
+  return eval(jsx`
+    <button {...props} className={classNames("icon-button", props.className)}>{props.children}</button>
+  `);
 }
 
 IconButton.defaultProps = {

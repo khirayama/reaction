@@ -1,5 +1,5 @@
 const types = require('universal/constants/action-types');
-const subscribe = require('universal/libs/micro-dispatcher').subscribe;
+const {subscribe} = require('universal/libs/micro-dispatcher');
 const MicroStore = require('universal/libs/micro-store');
 
 const READY_APPLICATION = '__READY_APPLICATION';

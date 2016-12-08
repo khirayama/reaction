@@ -1,10 +1,10 @@
 /* eslint-env browser */
 
-const Component = require('react').Component;
-const PropTypes = require('react').PropTypes;
-const createElement = require('react').createElement;
+const {Component, createElement, PropTypes} = require('react');
+const classNames = require('classnames');
+const jsx = require('universal/libs/jsx-template');
 
-const changeLocation = require('universal/actions/application-action-creators').changeLocation;
+const {changeLocation} = require('universal/actions/application-action-creators');
 
 class Link extends Component {
   constructor() {
@@ -23,11 +23,13 @@ class Link extends Component {
     changeLocation(pathname);
   }
   render() {
-    return createElement('a', {
-      href: this.props.href,
-      className: `link ${this.props.className}`,
-      onClick: this.handleClick,
-    }, this.props.children);
+    return eval(jsx`
+       <a
+         href={this.props.href}
+         onClick={this.handleClick}
+         className={classNames("link", this.props.className)}
+         >{this.props.children}</a>
+    `);
   }
 }
 

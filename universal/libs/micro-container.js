@@ -1,5 +1,4 @@
-const Component = require('react').Component;
-const PropTypes = require('react').PropTypes;
+const {Component, PropTypes} = require('react');
 
 class MicroContainer extends Component {
   constructor(props) {

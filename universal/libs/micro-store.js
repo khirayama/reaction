@@ -1,6 +1,6 @@
 /* global window */
 
-const EventEmitter = require('events').EventEmitter;
+const {EventEmitter} = require('events');
 
 const EVENT_CHANGE = '__CHANGE_STORE';
 

@@ -1,14 +1,14 @@
 /* eslint-env browser */
 
-const createElement = require('react').createElement;
-const ReactDOM = require('react-dom');
+const {createElement} = require('react');
+const {render} = require('react-dom');
 
 const Store = require('universal/store');
 
 const ApplicationContainer = require('universal/views/application-container');
 
 const i18n = require('universal/locales');
-const changeLocation = require('universal/actions/application-action-creators').changeLocation;
+const {changeLocation} = require('universal/actions/application-action-creators');
 
 window.addEventListener('popstate', () => {
   changeLocation(location.pathname, false);
@@ -19,5 +19,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const store = new Store(window.state);
 
-  ReactDOM.render(createElement(ApplicationContainer, {store}), document.querySelector('.application'));
+  render(createElement(ApplicationContainer, {store}), document.querySelector('.application'));
 });

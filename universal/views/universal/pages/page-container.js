@@ -1,13 +1,14 @@
 /* eslint-env browser */
 
-const createElement = require('react').createElement;
+const {createElement} = require('react');
+const jsx = require('universal/libs/jsx-template');
 
 const MicroContainer = require('universal/libs/micro-container');
 
 const HomePage = require('universal/views/universal/pages/home-page');
 const FeedPage = require('universal/views/universal/pages/feed-page');
 const StyleguidePage = require('universal/views/universal/pages/styleguide-page');
-const Link = require('universal/views/universal/components/link.js');
+const Link = require('universal/views/universal/components/link');
 
 class PageContainer extends MicroContainer {
   _updateTitle(title) {
@@ -19,19 +20,21 @@ class PageContainer extends MicroContainer {
     switch (state.pathname) {
       case '/':
         if (!state.isAuthenticated) {
-          return createElement(HomePage, {state});
+          return eval(jsx`<HomePage state={state}/>`);
         }
-        return createElement(FeedPage, {state});
+        return eval(jsx`<FeedPage state={state}/>`);
       case '/styleguide':
         if (!state.isAuthenticated) {
-          return createElement(HomePage, {state});
+          return eval(jsx`<HomePage state={state}/>`);
         }
-        return createElement(StyleguidePage, {state});
+        return eval(jsx`<StyleguidePage state={state}/>`);
       default:
-        return createElement('section', {className: 'page'},
-          createElement('h1', null, 'Not found.'),
-          createElement(Link, {href: '/'}, 'top')
-        );
+        return eval(jsx`
+          <section className="page">
+            <h1>Not Found</h1>
+            <Link href="/">top</Link>
+          </section>
+        `);
     }
   }
   render() {
@@ -42,7 +45,7 @@ class PageContainer extends MicroContainer {
       this._updateTitle(state.title);
     }
 
-    return createElement('section', {className: "page-container"}, pageElement);
+    return eval(jsx`<section className="page-container">{pageElement}</section>`);
   }
 }
 
