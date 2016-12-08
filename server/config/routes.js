@@ -1,11 +1,11 @@
-import {Router} from 'express';
+const {Router} = require('express');
 
-import {
+const {
   authHandler,
   authCallbackHandler,
   logoutHandler,
-} from 'server/app/handlers/auth-handlers';
-import {applicationHandler} from 'server/app/handlers/application-handlers';
+} = require('server/app/handlers/auth-handlers');
+const {applicationHandler} = require('server/app/handlers/application-handlers');
 
 const router = new Router();
 
@@ -16,4 +16,4 @@ router.use('/auth', new Router()
 router.get('/logout', logoutHandler);
 router.get('/*', applicationHandler);
 
-export default router;
+module.exports = router;

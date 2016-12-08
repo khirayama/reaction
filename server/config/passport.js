@@ -1,5 +1,5 @@
-import passport from 'passport';
-import {Strategy as TwitterStrategy} from 'passport-twitter';
+const passport = require('passport');
+const TwitterStrategy = require('passport-twitter').Strategy;
 
 const config = {
   twitter: {
@@ -9,7 +9,7 @@ const config = {
   },
 };
 
-export function setup() {
+function setup() {
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
@@ -24,3 +24,5 @@ export function setup() {
     }
   ));
 }
+
+module.exports = {setup};

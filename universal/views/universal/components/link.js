@@ -1,10 +1,12 @@
 /* eslint-env browser */
 
-import React, {Component, PropTypes} from 'react';
+const {Component, createElement, PropTypes} = require('react');
+const classNames = require('classnames');
+const jsx = require('universal/libs/jsx-template');
 
-import {changeLocation} from 'universal/actions/application-action-creators';
+const {changeLocation} = require('universal/actions/application-action-creators');
 
-export default class Link extends Component {
+class Link extends Component {
   constructor() {
     super();
 
@@ -21,13 +23,13 @@ export default class Link extends Component {
     changeLocation(pathname);
   }
   render() {
-    return (
-      <a
-        href={this.props.href}
-        onClick={this.handleClick}
-        className={`link ${this.props.className}`}
-        >{this.props.children}</a>
-    );
+    return eval(jsx`
+       <a
+         href={this.props.href}
+         onClick={this.handleClick}
+         className={classNames("link", this.props.className)}
+         >{this.props.children}</a>
+    `);
   }
 }
 
@@ -40,3 +42,5 @@ Link.propTypes = {
   href: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
+
+module.exports = Link;

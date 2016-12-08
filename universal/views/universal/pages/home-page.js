@@ -1,9 +1,10 @@
-import React from 'react';
+const {createElement} = require('react');
+const jsx = require('universal/libs/jsx-template');
 
-import i18n from 'universal/locales';
+const i18n = require('universal/locales');
 
-export default function HomePage() {
-  return (
+function HomePage() {
+  return eval(jsx`
     <section className="page home-page">
       <header>
         <h1>Reaction</h1>
@@ -17,5 +18,7 @@ export default function HomePage() {
         </ul>
       </div>
     </section>
-  );
+  `);
 }
+
+module.exports = HomePage;

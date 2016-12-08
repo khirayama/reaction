@@ -1,4 +1,4 @@
-import path from 'path';
+const path = require('path');
 
 class I18n {
   constructor(config) {
@@ -39,7 +39,7 @@ class I18n {
   }
 }
 
-export default new I18n({
+module.exports = new I18n({
   locales: ['en', 'ja'],
   defaultLocale: 'en',
   path: 'universal/locales',

@@ -1,6 +1,6 @@
-import {Component, PropTypes} from 'react';
+const {Component, PropTypes} = require('react');
 
-export default class MicroContainer extends Component {
+class MicroContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -25,3 +25,5 @@ export default class MicroContainer extends Component {
 MicroContainer.propTypes = {
   store: PropTypes.object.isRequired,
 };
+
+module.exports = MicroContainer;

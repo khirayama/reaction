@@ -1,9 +1,10 @@
 /* global window */
-import {EventEmitter} from 'events';
+
+const {EventEmitter} = require('events');
 
 const EVENT_CHANGE = '__CHANGE_STORE';
 
-export default class MicroStore extends EventEmitter {
+class MicroStore extends EventEmitter {
   constructor() {
     super();
 
@@ -43,3 +44,5 @@ export default class MicroStore extends EventEmitter {
     return Object.assign({}, this.state);
   }
 }
+
+module.exports = MicroStore;
