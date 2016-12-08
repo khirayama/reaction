@@ -41,6 +41,7 @@ const options = {
 function buildStyles(isWatch) {
   function build() {
     console.log('build: styles');
+    console.time('timer');
 
     const processors = [
       csseasyimport(options.styles.csseasyimport),
@@ -53,7 +54,10 @@ function buildStyles(isWatch) {
       .pipe(plumber())
       .pipe(postcss(processors))
       .pipe(gulp.dest(DIST_ROOT))
-      .on('end', () => console.log('finish to build: styles'));
+      .on('end', () => {
+        console.log('finish to build: styles');
+        console.timeEnd('timer');
+      });
   }
 
   if (isWatch) {
@@ -74,12 +78,16 @@ function buildScripts(isWatch) {
   function build() {
     return () => {
       console.log('build: scripts');
+      console.time('timer');
       bundler.bundle().on('error', error => {
         console.error(error.message);
       })
       .pipe(source('bundle.js'))
       .pipe(gulp.dest(DIST_ROOT))
-      .on('end', () => console.log('finish to build: scripts'));
+      .on('end', () => {
+        console.log('finish to build: scripts');
+        console.timeEnd('timer');
+      });
     };
   }
 
@@ -90,11 +98,15 @@ function buildScripts(isWatch) {
 function buildFiles(isWatch) {
   function build() {
     console.log('build: files');
+    console.time('timer');
 
     return gulp.src(`${SRC_ROOT}/**/*.{csv,json,ico,txt,woff2}`)
       .pipe(plumber())
       .pipe(gulp.dest(DIST_ROOT))
-      .on('end', () => console.log('finish to build: files'));
+      .on('end', () => {
+        console.log('finish to build: files');
+        console.timeEnd('timer');
+      });
   }
 
   if (isWatch) {
