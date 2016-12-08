@@ -50,7 +50,7 @@ class FeedTab extends Component {
 class FeedList extends Component {
   render() {
     const items = [];
-    for (let index = 0; index < 1000; index++) {
+    for (let index = 0; index < 100; index++) {
       items.push({id: index, title: `Feed ${index}`});
     }
     return eval(jsx`<ul className="feed-list">{items.map(item => <FeedListItem key={item.id} feed={item}/>)}</ul>`);
