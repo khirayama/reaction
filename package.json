@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "khirayama <https://github.com/khirayama>",
   "license": "MIT",
+  "engines": {
+    "node": ">=7.2"
+  },
   "scripts": {
     "start": "npm run development",
     "development": "npm run watch:server & npm run watch:client",
