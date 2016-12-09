@@ -4,8 +4,8 @@ const {
   authHandler,
   authCallbackHandler,
   logoutHandler,
-} = require('server/app/handlers/auth-handlers');
-const {applicationHandler} = require('server/app/handlers/application-handlers');
+} = require('app/handlers/auth-handlers');
+const {applicationHandler} = require('app/handlers/application-handlers');
 
 const router = new Router();
 

@@ -8,8 +8,8 @@ const useragent = require('express-useragent');
 
 const i18n = require('universal/locales');
 
-const setupPassport = require('server/config/passport').setup;
-const router = require('server/config/routes');
+const setupPassport = require('config/passport').setup;
+const router = require('config/routes');
 
 const app = express();
 
