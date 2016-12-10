@@ -1,8 +1,8 @@
 /* global window */
 
-const axios = require('axios');
+import axios from 'axios';
 
-class EntryResource {
+export class EntryResource {
   constructor(resourceUrl) {
     this._cache = this._load();
     this._resourceUrl = resourceUrl || null;
@@ -64,7 +64,7 @@ class EntryResource {
   }
 }
 
-class CollectionResource {
+export class CollectionResource {
   constructor(resourceUrl) {
     this._cache = this._load();
     this._cacheQuery = null;
@@ -199,5 +199,3 @@ class CollectionResource {
     return null;
   }
 }
-
-module.exports = {EntryResource, CollectionResource};

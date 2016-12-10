@@ -1,13 +1,13 @@
-const passport = require('passport');
+import passport from 'passport';
 
-function authHandler(req, res) {
+export function authHandler(req, res) {
   const provider = req.params.provider;
   const authenticate = passport.authenticate(provider);
 
   authenticate(req, res);
 }
 
-function authCallbackHandler(req, res) {
+export function authCallbackHandler(req, res) {
   const provider = req.params.provider;
   const authenticate = passport.authenticate(provider, {
     successRedirect: '/',
@@ -17,13 +17,7 @@ function authCallbackHandler(req, res) {
   authenticate(req, res);
 }
 
-function logoutHandler(req, res) {
+export function logoutHandler(req, res) {
   req.logout();
   res.redirect('/');
 }
-
-module.exports = {
-  authHandler,
-  authCallbackHandler,
-  logoutHandler,
-};

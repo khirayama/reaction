@@ -1,16 +1,15 @@
 /* eslint-env browser */
 
-const {createElement} = require('react');
-const jsx = require('universal/libs/jsx-template');
+import React, {createElement} from 'react';
 
-const MicroContainer = require('universal/libs/micro-container');
+import MicroContainer from 'universal/libs/micro-container';
 
-const HomePage = require('universal/views/universal/pages/home-page');
-const FeedPage = require('universal/views/universal/pages/feed-page');
-const StyleguidePage = require('universal/views/universal/pages/styleguide-page');
-const Link = require('universal/views/universal/components/link');
+import HomePage from 'universal/views/universal/pages/home-page';
+import FeedPage from 'universal/views/universal/pages/feed-page';
+import StyleguidePage from 'universal/views/universal/pages/styleguide-page';
+import Link from 'universal/views/universal/components/link';
 
-class PageContainer extends MicroContainer {
+export default class PageContainer extends MicroContainer {
   _updateTitle(title) {
     window.document.title = title;
   }
@@ -20,21 +19,21 @@ class PageContainer extends MicroContainer {
     switch (state.pathname) {
       case '/':
         if (!state.isAuthenticated) {
-          return eval(jsx`<HomePage state={state}/>`);
+          return <HomePage state={state}/>;
         }
-        return eval(jsx`<FeedPage state={state}/>`);
+        return <FeedPage state={state}/>;
       case '/styleguide':
         if (!state.isAuthenticated) {
-          return eval(jsx`<HomePage state={state}/>`);
+          return <HomePage state={state}/>;
         }
-        return eval(jsx`<StyleguidePage state={state}/>`);
+        return <StyleguidePage state={state}/>;
       default:
-        return eval(jsx`
+        return (
           <section className="page">
             <h1>Not Found</h1>
             <Link href="/">top</Link>
           </section>
-        `);
+        );
     }
   }
   render() {
@@ -45,10 +44,8 @@ class PageContainer extends MicroContainer {
       this._updateTitle(state.title);
     }
 
-    return eval(jsx`<section className="page-container">{pageElement}</section>`);
+    return <section className="page-container">{pageElement}</section>;
   }
 }
 
 PageContainer.propTypes = {};
-
-module.exports = PageContainer;

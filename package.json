@@ -9,10 +9,28 @@
   },
   "scripts": {
     "start": "npm run development",
-    "build": "rm -rf tmp dist && (babel src --out-dir tmp & gulp copy:files && NODE_PATH=tmp gulp build)",
-    "application": "npm run build && NODE_PATH=dist node dist/index.js",
-    "watch": "babel src --out-dir tmp -w & gulp copy:files:watch & NODE_PATH=tmp gulp watch",
-    "development": "npm run build && (npm run watch & NODE_PATH=dist nodemon dist/index.js --ignore src --ignore tmp --ignore dist/public)",
+
+    "clean": "rm -rf tmp dist",
+    "server": "NODE_PATH=dist node dist/index.js",
+    "server:watch": "NODE_PATH=dist nodemon dist/index.js --ignore src --ignore tmp --ignore dist/public",
+
+    "compile:scripts": "babel src --out-dir tmp",
+    "compile:scripts:watch": "babel src --out-dir tmp -w",
+    "copy:files": "gulp copy:files",
+    "copy:files:watch": "gulp copy:files:watch",
+    "bundle:scripts": "NODE_PATH=tmp browserify tmp/client/index.js -o dist/public/bundle.js",
+    "bundle:scripts:watch": "NODE_PATH=tmp watchify tmp/client/index.js -o dist/public/bundle.js -v",
+    "build:scripts": "npm run compile:scripts && npm run copy:files && npm run bundle:scripts",
+    "watch:scripts": "npm run build:scripts && (npm run compile:scripts:watch & npm run copy:files:watch & npm run bundle:scripts:watch)",
+
+    "build:styles": "gulp build:styles",
+    "watch:styles": "gulp watch:styles",
+
+    "build": "npm run clean && npm run build:scripts && npm run build:styles",
+    "watch": "npm run clean && (npm run watch:scripts & npm run watch:styles)",
+
+    "application": "npm run build & npm run server",
+    "development": "npm run watch & npm run server:watch",
     "lint": "npm run lint:scripts && npm run lint:styles",
     "lint:fix": "npm run lint:scripts:fix && npm run lint:styles && npm run lint:styles:sort:fix",
     "lint:scripts": "NODE_PATH=src eslint --ignore-path .gitignore server client universal",

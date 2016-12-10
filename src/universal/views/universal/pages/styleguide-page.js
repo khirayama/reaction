@@ -1,13 +1,12 @@
-const {createElement} = require('react');
-const classNames = require('classnames');
-const jsx = require('universal/libs/jsx-template');
+import React, {createElement} from 'react';
+import classNames from 'classnames';
 
-const i18n = require('universal/locales');
+import i18n from 'universal/locales';
 
-function StyleguidePage() {
+export default function StyleguidePage() {
   // const englishText = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.';
   // const japaneseText = 'あなたは場合ことにそうした関係家というもののところが申し上げだっない。多分先刻を経験者は至極その説明たあっでもに用いていたがも説明知れなうて、少々にも行っますですうた。空虚で思ったものはもう当時にいくらなけれたた。どうも向さんへ準備尻全く見当にするまい正義わが騒ぎどこか矛盾をという不衰弱たでないないから、この以前はこちらか思い西洋に解るから、張さんのので金力の何がどうもお赴任としよてあなた径路にご観念がいうようにもしお講演を考えだないと、けっして依然として影響でしたばいですのをしずです。';
-  return eval(jsx`
+  return (
     <section className="page styleguide-page">
       <section className="page-content">
         <h1>Styleguide for Reaction</h1>
@@ -134,7 +133,5 @@ function StyleguidePage() {
         </section>
       </section>
     </section>
-  `);
+  );
 }
-
-module.exports = StyleguidePage;

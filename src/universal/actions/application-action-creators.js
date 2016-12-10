@@ -1,5 +1,5 @@
-const {dispatch} = require('universal/libs/micro-dispatcher');
-const types = require('universal/constants/action-types');
+import {dispatch} from 'universal/libs/micro-dispatcher';
+import types from 'universal/constants/action-types';
 
 function updateTitle(title) {
   return new Promise(resolve => {
@@ -107,7 +107,7 @@ function getUI(useragent) {
   return ui;
 }
 
-function startApplication(pathname, useragent, locale, isAuthenticated) {
+export function startApplication(pathname, useragent, locale, isAuthenticated) {
   initializePage(pathname);
   dispatch({
     type: types.START_APP,
@@ -118,12 +118,10 @@ function startApplication(pathname, useragent, locale, isAuthenticated) {
   });
 }
 
-function changeLocation(pathname) {
+export function changeLocation(pathname) {
   initializePage(pathname);
   dispatch({
     type: types.CHANGE_LOCATION,
     pathname,
   });
 }
-
-module.exports = {startApplication, changeLocation};

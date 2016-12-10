@@ -1,12 +1,12 @@
 // universal
-const {createElement} = require('react');
-const {renderToString} = require('react-dom/server');
+import React, {createElement} from 'react';
+import {renderToString} from 'react-dom/server';
 
-const i18n = require('universal/locales');
-const Store = require('universal/store');
-const ApplicationContainer = require('universal/views/application-container');
-const {startApplication} = require('universal/actions/application-action-creators');
-const {unsubscribeAll} = require('universal/libs/micro-dispatcher');
+import i18n from 'universal/locales';
+import Store from 'universal/store';
+import ApplicationContainer from 'universal/views/application-container';
+import {startApplication} from 'universal/actions/application-action-creators';
+import {unsubscribeAll} from 'universal/libs/micro-dispatcher';
 
 function layout(content, state) {
   return `
@@ -33,7 +33,7 @@ function layout(content, state) {
   `;
 }
 
-function applicationHandler(req, res) {
+export function applicationHandler(req, res) {
   i18n.setLocale(req.getLocale());
 
   unsubscribeAll();
@@ -51,5 +51,3 @@ function applicationHandler(req, res) {
     req.isAuthenticated()
   );
 }
-
-module.exports = {applicationHandler};

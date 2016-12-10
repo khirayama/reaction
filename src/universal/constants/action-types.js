@@ -7,4 +7,4 @@ const actionTypes = {
   FETCH_ACTIVITIES: '__FETCH_ACTIVITIES',
 };
 
-module.exports = actionTypes;
+export default actionTypes;

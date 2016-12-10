@@ -1,22 +1,20 @@
-const {createElement} = require('react');
-const classNames = require('classnames');
-const jsx = require('universal/libs/jsx-template');
+import React, {createElement} from 'react';
+import classNames from 'classnames';
 
-const MicroContainer = require('universal/libs/micro-container');
+import MicroContainer from 'universal/libs/micro-container';
 
-const PageContainer = require('universal/views/universal/pages/page-container');
+import PageContainer from 'universal/views/universal/pages/page-container';
 
-class ApplicationContainer extends MicroContainer {
+export default class ApplicationContainer extends MicroContainer {
   render() {
     const state = this.props.store.getState();
 
-    return eval(jsx`
+    return (
       <section className={classNames("application-content", state.ui)}>
         <PageContainer store={this.props.store}/>
-      </section>`);
+      </section>
+    );
   }
 }
 
 ApplicationContainer.propTypes = {};
-
-module.exports = ApplicationContainer;

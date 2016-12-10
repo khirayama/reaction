@@ -1,12 +1,11 @@
-const {Component, createElement, PropTypes} = require('react');
-const jsx = require('universal/libs/jsx-template');
+import React, {Component, createElement, PropTypes} from 'react';
 
-const Link = require('universal/views/universal/components/link');
-const IconButton = require('universal/views/universal/components/icon-button');
+import Link from 'universal/views/universal/components/link';
+import IconButton from 'universal/views/universal/components/icon-button';
 
 class ApplicationHeader extends Component {
   render() {
-    return eval(jsx`
+    return (
       <section className="application-header">
         <Link href="/setting" className="setting-link link__plain">
           <div className="setting-link-content"/>
@@ -15,26 +14,26 @@ class ApplicationHeader extends Component {
           <IconButton className="search-button">search</IconButton>
         </div>
       </section>
-    `);
+    );
   }
 }
 
 class FeedContainer extends Component {
   render() {
-    return eval(jsx`
+    return (
       <section className="feed">
         <FeedTab/>
         <section className="feed-list-container">
           <FeedList/>
         </section>
       </section>
-    `);
+    );
   }
 }
 
 class FeedTab extends Component {
   render() {
-    return eval(jsx`
+    return (
       <ul className="feed-tab">
         <li className="feed-tab-item feed-tab-item__active">
           <i className="icon">library_books</i>
@@ -43,7 +42,7 @@ class FeedTab extends Component {
           <i className="icon">question_answer</i>
         </li>
       </ul>
-    `);
+    );
   }
 }
 
@@ -53,7 +52,10 @@ class FeedList extends Component {
     for (let index = 0; index < 100; index++) {
       items.push({id: index, title: `Feed ${index}`});
     }
-    return eval(jsx`<ul className="feed-list">{items.map(item => <FeedListItem key={item.id} feed={item}/>)}</ul>`);
+    const itemElements = items.map((item) => {
+      return <FeedListItem key={item.id} feed={item}/>;
+    });
+    return <ul className="feed-list">{itemElements}</ul>;
   }
 }
 
@@ -61,12 +63,12 @@ class FeedListItem extends Component {
   render() {
     const feed = this.props.feed;
 
-    return eval(jsx`
+    return (
       <li className="feed-list-item">
         <span className="feed-list-item-title">{feed.title}</span>
         <ReactionList/>
       </li>
-    `);
+    );
   }
 }
 FeedListItem.propTypes = {
@@ -75,26 +77,24 @@ FeedListItem.propTypes = {
 
 class ReactionList extends Component {
   render() {
-    return eval(jsx`
+    return (
       <ul className="reaction-list">
         <li className="reaction-list-item"><i className="icon">favorite</i></li>
         <li className="reaction-list-item"><i className="icon">comment</i></li>
         <li className="reaction-list-item"><i className="icon">watch_later</i></li>
         <li className="reaction-list-item"><i className="icon">bookmark</i></li>
       </ul>
-    `);
+    );
   }
 }
 
-function FeedPage() {
-  return eval(jsx`
+export default function FeedPage() {
+  return (
     <section className="page feed-page">
       <section className="page-content">
         <ApplicationHeader/>
         <FeedContainer/>
       </section>
     </section>
-  `);
+  );
 }
-
-module.exports = FeedPage;
