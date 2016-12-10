@@ -1,16 +1,15 @@
 .feed-page {
-
   .page-content {
     position: relative;
+    margin: 0 auto;
+    padding-top: 44px;
     max-width: 100%;
     width: 680px;
     height: 100%;
-    margin: 0 auto;
-    padding-top: 44px;
 
     .feed-list-container {
-      height: 100%;
       overflow: scroll;
+      height: 100%;
     }
   }
 }
@@ -19,9 +18,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   height: 45px;
-  z-index: 1;
   background-color: $color-white;
   user-select: none;
 
@@ -43,9 +42,9 @@
     right: 0;
 
     .search-button {
-      font-size: 24px;
       width: 44px;
       height: 44px;
+      font-size: 24px;
     }
   }
 }
@@ -56,19 +55,20 @@
   height: 100%;
   background-color: $color-white;
 }
+
 .feed-tab {
   position: absolute;
   left: 0;
+  display: flex;
   width: 100%;
   height: 44px;
-  display: flex;
 
   .feed-tab-item {
     flex: 1;
-    text-align: center;
-    font-size: 24px;
     padding: 4px 0;
     color: $color-text-secondary;
+    text-align: center;
+    font-size: 24px;
     cursor: pointer;
     user-select: none;
 
@@ -80,22 +80,21 @@
       position: relative;
       box-shadow: 0 -4px 0 0 $color-primary inset;
 
-      &:after {
+      &::after {
         position: absolute;
         top: calc(50% - 16px);
         left: calc(50% + 8px);
-        content: '';
         width: 8px;
         height: 8px;
         border-radius: 50%;
         background-color: $color-primary;
+        content: '';
       }
     }
   }
 }
 
 .feed-list {
-
   .feed-list-item {
     border-bottom: $border;
 
@@ -118,8 +117,8 @@
 
   .reaction-list-item {
     display: inline-block;
-    width: 44px;
     padding: 0 0 4px;
+    width: 44px;
   }
 }
 
@@ -127,6 +126,7 @@
   .feed {
     padding-top: 44px;
   }
+
   .feed-tab {
     top: 0;
     border-bottom: $border;
@@ -137,9 +137,11 @@
   .feed {
     padding-bottom: 44px;
   }
+
   .application-header {
     border-bottom: $border;
   }
+
   .feed-tab {
     bottom: 0;
     border-top: $border;

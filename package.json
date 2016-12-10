@@ -27,11 +27,10 @@
     "application": "npm run build & npm run server",
     "development": "npm run watch & npm run server:watch",
     "lint": "npm run lint:scripts && npm run lint:styles",
-    "lint:fix": "npm run lint:scripts:fix && npm run lint:styles && npm run lint:styles:sort:fix",
+    "lint:fix": "npm run lint:scripts:fix && npm run lint:styles",
     "lint:scripts": "eslint --ignore-path .gitignore src",
     "lint:scripts:fix": "eslint --ignore-path .gitignore --fix src",
-    "lint:styles": "stylelint --config .stylelintrc client/**/*.css",
-    "lint:styles:sort:fix": "postcss --use postcss-sorting -r client/**/*.css"
+    "lint:styles": "stylelint --config .stylelintrc src/**/*.css"
   },
   "dependencies": {
     "autoprefixer": "^6.5.3",
@@ -63,8 +62,8 @@
     "postcss-cli": "^2.6.0",
     "postcss-easy-import": "^1.0.1",
     "postcss-nested": "^1.0.0",
+    "postcss-reporter": "^2.0.0",
     "postcss-simple-vars": "^3.0.0",
-    "postcss-sorting": "^1.7.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "stylelint": "^7.6.0",

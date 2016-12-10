@@ -2,29 +2,28 @@
   display: inline-block;
   padding: 4px 8px;
   border-radius: $radius;
-  color: $color-text-secondary;
   background-color: inherit;
-  font-weight: $font-weight-bold;
+  color: $color-text-secondary;
+  vertical-align: text-bottom;
   text-align: center;
+  font-weight: $font-weight-bold;
+  font-style: normal;
+  font-size: inherit;
+  font-family: 'Material Icons';
   cursor: pointer;
   transition: $timing-basic;
   transition-property: color, background;
-
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-size: inherit;
   text-rendering: optimizeLegibility;
-  font-smoothing: antialiased;
   font-feature-settings: 'liga';
-  vertical-align: text-bottom;
 
   &:hover,
   &:focus {
-    color: $color-text;
     background-color: $color-ui-focus;
-  }
-  &:active {
     color: $color-text;
+  }
+
+  &:active {
     background-color: $color-ui-active;
+    color: $color-text;
   }
 }
