@@ -6,4 +6,5 @@
 
 /.envrc
 
-/server/public
+/tmp
+/dist
