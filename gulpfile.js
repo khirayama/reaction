@@ -13,9 +13,6 @@ const cssnested = require('postcss-nested');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
-const SRC_ROOT = 'client';
-const DIST_ROOT = 'server/public';
-
 const options = {
   scripts: {
     browserify: {
@@ -41,8 +38,8 @@ const options = {
 
 function buildStyles(isWatch) {
   function build() {
-    console.log('build: styles');
-    console.time('timer');
+    console.log('building: styles');
+    console.time('build: styles');
 
     const processors = [
       csseasyimport(options.styles.csseasyimport),
@@ -55,10 +52,7 @@ function buildStyles(isWatch) {
       .pipe(plumber())
       .pipe(postcss(processors))
       .pipe(gulp.dest('dist/public'))
-      .on('end', () => {
-        console.log('finish to build: styles');
-        console.timeEnd('timer');
-      });
+      .on('end', () => console.timeEnd('build: styles'));
   }
 
   if (isWatch) {
@@ -78,17 +72,14 @@ function buildScripts(isWatch) {
 
   function build() {
     return () => {
-      console.log('build: scripts');
-      console.time('timer');
+      console.log('buildng: scripts');
+      console.time('build: scripts');
       bundler.bundle().on('error', error => {
         console.error(error.message);
       })
       .pipe(source('bundle.js'))
       .pipe(gulp.dest('dist/public'))
-      .on('end', () => {
-        console.log('finish to build: scripts');
-        console.timeEnd('timer');
-      });
+      .on('end', () => console.timeEnd('build: scripts'));
     };
   }
 
@@ -96,53 +87,20 @@ function buildScripts(isWatch) {
   return build();
 }
 
-function copyFiles(isWatch) {
+function copyFiles(src, dist, isWatch) {
   function copy() {
-    return gulp.src('src/**/*.{csv,json,ico,txt,woff2}')
-      .pipe(changed('tmp'))
-      .pipe(gulp.dest('tmp'));
+    console.log('coping: files');
+    console.time('copy: files');
+    return gulp.src(src)
+      .pipe(changed(dist))
+      .pipe(gulp.dest(dist))
+      .on('end', () => console.timeEnd('copy: files'));
   }
 
   if (isWatch) {
     return () => {
       copy();
-      gulp.watch(`src/**/*.{csv,json,ico,txt,woff2}`, copy);
-    };
-  }
-  return () => {
-    copy();
-  };
-}
-
-function copyUniversalToDist(isWatch) {
-  function copy() {
-    return gulp.src('tmp/universal/**/*')
-      .pipe(changed('dist/universal'))
-      .pipe(gulp.dest('dist/universal'));
-  };
-
-  if (isWatch) {
-    return () => {
-      copy();
-      gulp.watch('tmp/universal/**/*', copy);
-    };
-  }
-  return () => {
-    copy();
-  };
-}
-
-function copyServerToDist(isWatch) {
-  function copy() {
-    return gulp.src('tmp/server/**/*.js')
-      .pipe(changed('dist'))
-      .pipe(gulp.dest('dist'));
-  };
-
-  if (isWatch) {
-    return () => {
-      copy();
-      gulp.watch('tmp/server/**/*.js', copy);
+      gulp.watch(src, copy);
     };
   }
   return () => {
@@ -176,14 +134,39 @@ function buildFiles(isWatch) {
 }
 
 // tasks
-gulp.task('copy:files', copyFiles(false));
-gulp.task('copy:files:watch', copyFiles(true));
+//
+gulp.task('copy:files', copyFiles(
+  'src/**/*.{csv,json,ico,txt,woff2}',
+  'tmp',
+  false
+));
+gulp.task('copy:files:watch', copyFiles(
+  'src/**/*.{csv,json,ico,txt,woff2}',
+  'tmp',
+  true
+));
 
-gulp.task('copy:universal', copyUniversalToDist(false));
-gulp.task('copy:universal:watch', copyUniversalToDist(true));
+gulp.task('copy:universal', copyFiles(
+  'tmp/universal/**/*',
+  'dist/universal',
+  false
+));
+gulp.task('copy:universal:watch', copyFiles(
+  'tmp/universal/**/*',
+  'dist/universal',
+  true
+));
 
-gulp.task('copy:server', copyServerToDist(false));
-gulp.task('copy:server:watch', copyServerToDist(true));
+gulp.task('copy:server', copyFiles(
+  'tmp/server/**/*.js',
+  'dist',
+  false
+));
+gulp.task('copy:server:watch', copyFiles(
+  'tmp/server/**/*.js',
+  'dist',
+  true
+));
 
 gulp.task('build:styles', buildStyles(false));
 gulp.task('watch:styles', buildStyles(true));
