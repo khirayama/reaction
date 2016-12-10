@@ -1,4 +1,4 @@
-import React, {Component, createElement, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 import Link from 'universal/views/universal/components/link';
 import IconButton from 'universal/views/universal/components/icon-button';
@@ -52,7 +52,7 @@ class FeedList extends Component {
     for (let index = 0; index < 100; index++) {
       items.push({id: index, title: `Feed ${index}`});
     }
-    const itemElements = items.map((item) => {
+    const itemElements = items.map(item => {
       return <FeedListItem key={item.id} feed={item}/>;
     });
     return <ul className="feed-list">{itemElements}</ul>;

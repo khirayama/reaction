@@ -1,5 +1,4 @@
-import React, {createElement} from 'react';
-import classNames from 'classnames';
+import React from 'react';
 
 import i18n from 'universal/locales';
 

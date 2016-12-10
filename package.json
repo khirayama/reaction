@@ -9,11 +9,9 @@
   },
   "scripts": {
     "start": "npm run development",
-
     "clean": "rm -rf tmp dist",
     "server": "NODE_PATH=dist node dist/index.js",
     "server:watch": "NODE_PATH=dist nodemon dist/index.js --ignore src --ignore tmp --ignore dist/public",
-
     "compile:scripts": "babel src --out-dir tmp",
     "compile:scripts:watch": "babel src --out-dir tmp -w",
     "copy:files": "gulp copy:files",
@@ -22,19 +20,16 @@
     "bundle:scripts:watch": "NODE_PATH=tmp watchify tmp/client/index.js -o dist/public/bundle.js -v",
     "build:scripts": "npm run compile:scripts && npm run copy:files && npm run bundle:scripts",
     "watch:scripts": "npm run build:scripts && (npm run compile:scripts:watch & npm run copy:files:watch & npm run bundle:scripts:watch)",
-
     "build:styles": "gulp build:styles",
     "watch:styles": "gulp watch:styles",
-
     "build": "npm run clean && npm run build:scripts && npm run build:styles",
     "watch": "npm run clean && (npm run watch:scripts & npm run watch:styles)",
-
     "application": "npm run build & npm run server",
     "development": "npm run watch & npm run server:watch",
     "lint": "npm run lint:scripts && npm run lint:styles",
     "lint:fix": "npm run lint:scripts:fix && npm run lint:styles && npm run lint:styles:sort:fix",
-    "lint:scripts": "NODE_PATH=src eslint --ignore-path .gitignore server client universal",
-    "lint:scripts:fix": "NODE_PATH=src eslint --ignore-path .gitignore --fix server client universal",
+    "lint:scripts": "eslint --ignore-path .gitignore src",
+    "lint:scripts:fix": "eslint --ignore-path .gitignore --fix src",
     "lint:styles": "stylelint --config .stylelintrc client/**/*.css",
     "lint:styles:sort:fix": "postcss --use postcss-sorting -r client/**/*.css"
   },

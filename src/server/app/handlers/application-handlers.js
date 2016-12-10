@@ -1,5 +1,5 @@
 // universal
-import React, {createElement} from 'react';
+import React from 'react';
 import {renderToString} from 'react-dom/server';
 
 import i18n from 'universal/locales';
@@ -40,7 +40,7 @@ export function applicationHandler(req, res) {
 
   const store = new Store();
   store.ready(() => {
-    const content = renderToString(createElement(ApplicationContainer, {store}));
+    const content = renderToString(<ApplicationContainer store={store}/>);
     res.send(layout(content, store.getState()));
   });
 

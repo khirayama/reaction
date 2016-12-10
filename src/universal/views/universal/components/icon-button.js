@@ -1,8 +1,8 @@
-import React, {createElement, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 
 export default function IconButton(props) {
-  return <button {...props} className={classNames("icon-button", props.className)}>{props.children}</button>;
+  return <button {...props} className={classNames('icon-button', props.className)}>{props.children}</button>;
 }
 
 IconButton.defaultProps = {

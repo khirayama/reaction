@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-import React, {Component, createElement, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 
 import {changeLocation} from 'universal/actions/application-action-creators';
@@ -23,11 +23,11 @@ export default class Link extends Component {
   }
   render() {
     return (
-       <a
-         href={this.props.href}
-         onClick={this.handleClick}
-         className={classNames("link", this.props.className)}
-         >{this.props.children}</a>
+      <a
+        href={this.props.href}
+        onClick={this.handleClick}
+        className={classNames('link', this.props.className)}
+        >{this.props.children}</a>
     );
   }
 }

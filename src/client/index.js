@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-import React, {createElement} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
 
 import Store from 'universal/store';
