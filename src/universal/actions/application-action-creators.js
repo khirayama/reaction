@@ -1,5 +1,6 @@
 import {dispatch} from 'universal/libs/micro-dispatcher';
 import types from 'universal/constants/action-types';
+import {getUI} from 'universal/helpers';
 
 function updateTitle(title) {
   return new Promise(resolve => {
@@ -94,17 +95,6 @@ function initializePage(pathname) {
       updateTitle('Not Found');
       break;
   }
-}
-
-function getUI(useragent) {
-  let ui = 'desktop';
-
-  if (useragent.isMobile || useragent.isTablet) {
-    ui = 'mobile';
-  } else if (useragent.isDesktop) {
-    ui = 'desktop';
-  }
-  return ui;
 }
 
 export function startApplication(pathname, useragent, locale, isAuthenticated) {
