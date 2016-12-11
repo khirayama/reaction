@@ -81,12 +81,9 @@ function fetchReactions() {
 function initializePage(pathname) {
   switch (pathname) {
     case '/':
-      updateTitle('Top');
+      updateTitle('Reaction');
       fetchPosts();
       fetchReactions();
-      break;
-    case '/app/dashboard':
-      updateTitle('Dashboard');
       break;
     case '/styleguide':
       updateTitle('Styleguide');
