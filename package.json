@@ -19,7 +19,7 @@
     "bundle:scripts": "NODE_PATH=tmp browserify tmp/client/index.js -o dist/public/bundle.js",
     "bundle:scripts:watch": "NODE_PATH=tmp watchify tmp/client/index.js -o dist/public/bundle.js -v",
     "build:scripts": "npm run compile:scripts && npm run copy:files && npm run bundle:scripts",
-    "watch:scripts": "npm run build:scripts && (npm run compile:scripts:watch & npm run copy:files:watch & npm run bundle:scripts:watch)",
+    "watch:scripts": "npm run compile:scripts && npm run copy:files && (npm run compile:scripts:watch & npm run copy:files:watch & npm run bundle:scripts:watch)",
     "build:styles": "gulp build:styles",
     "watch:styles": "gulp watch:styles",
     "build": "npm run clean && npm run build:scripts && npm run build:styles",
