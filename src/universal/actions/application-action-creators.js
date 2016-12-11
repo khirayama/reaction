@@ -29,8 +29,8 @@ function fetchPosts() {
   });
 }
 
-function fetchActivities() {
-  const activities = [];
+function fetchReactions() {
+  const reactions = [];
   for (let index = 0; index < 100; index++) {
     const names = [
       'hirayam',
@@ -53,25 +53,25 @@ function fetchActivities() {
     ];
     const postName = postNames[Math.floor(Math.random() * postNames.length)];
 
-    const activityTypes = [
+    const reactionTypes = [
       'いいね!',
       'コメント!',
       'ブックマーク!',
       'あとで読む!',
     ];
-    const activityType = activityTypes[Math.floor(Math.random() * activityTypes.length)];
+    const reactionType = reactionTypes[Math.floor(Math.random() * reactionTypes.length)];
 
-    activities.push({
+    reactions.push({
       id: index,
-      type: activityType,
+      type: reactionType,
       user: {name},
       post: {name: postName},
     });
   }
   return new Promise(resolve => {
     dispatch({
-      type: types.FETCH_ACTIVITIES,
-      activities,
+      type: types.FETCH_REACTIONS,
+      reactions,
     });
     resolve();
   });
@@ -82,7 +82,7 @@ function initializePage(pathname) {
     case '/':
       updateTitle('Top');
       fetchPosts();
-      fetchActivities();
+      fetchReactions();
       break;
     case '/app/dashboard':
       updateTitle('Dashboard');

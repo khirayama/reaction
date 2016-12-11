@@ -16,7 +16,7 @@ export default class Store extends MicroStore {
       isAuthenticated: false,
 
       posts: null,
-      activities: null,
+      reactions: null,
     }, state);
 
     this._subscribe();

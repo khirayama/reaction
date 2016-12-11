@@ -4,7 +4,7 @@ const actionTypes = {
   UPDATE_TITLE: '__UPDATE_TITLE',
 
   FETCH_POSTS: '__FETCH_POSTS',
-  FETCH_ACTIVITIES: '__FETCH_ACTIVITIES',
+  FETCH_REACTIONS: '__FETCH_REACTIONS',
 };
 
 export default actionTypes;
