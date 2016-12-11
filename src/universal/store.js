@@ -43,15 +43,16 @@ export default class Store extends MicroStore {
           this.state.posts = action.posts;
           break;
 
-        case types.FETCH_ACTIVITIES:
-          this.state.activities = action.activities;
+        case types.FETCH_REACTIONS:
+          this.state.reactions = action.reactions;
           break;
 
         default:
           break;
       }
 
-      // console.log(action, this.state);
+      console.log('%cAction:', 'color: red; font-weight: bold;', action);
+      console.log('%cState:', 'color: blue; font-weight: bold;', this.state);
       this.dispatchChange();
     });
   }
