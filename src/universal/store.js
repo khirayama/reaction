@@ -51,8 +51,10 @@ export default class Store extends MicroStore {
           break;
       }
 
-      console.log('%cAction:', 'color: red; font-weight: bold;', action);
-      console.log('%cState:', 'color: blue; font-weight: bold;', this.state);
+      if (typeof window == 'object') {
+        console.log('%cAction:', 'color: red; font-weight: bold;', action);
+        console.log('%cState:', 'color: blue; font-weight: bold;', this.state);
+      }
       this.dispatchChange();
     });
   }
