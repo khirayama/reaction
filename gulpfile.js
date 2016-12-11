@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
-const changed = require('gulp-changed');
 
 const postcss = require('gulp-postcss');
 const csseasyimport = require('postcss-easy-import');
@@ -46,35 +45,6 @@ function buildStyles(isWatch) {
   };
 }
 
-function copyFiles(src, dist, isWatch) {
-  function copy() {
-    return gulp.src(src)
-      .pipe(changed(dist))
-      .pipe(gulp.dest(dist));
-  }
-
-  if (isWatch) {
-    return () => {
-      copy();
-      gulp.watch(src, copy);
-    };
-  }
-  return () => {
-    copy();
-  };
-}
-
 // tasks
-gulp.task('copy:tmp', copyFiles('src/**/*.{csv,json,ico,txt,woff2}', 'tmp', false));
-gulp.task('copy:tmp:watch', copyFiles('src/**/*.{csv,json,ico,txt,woff2}', 'tmp', true));
-gulp.task('copy:server', copyFiles('tmp/server/**/*.js', 'dist', false));
-gulp.task('copy:server:watch', copyFiles('tmp/server/**/*.js', 'dist', true));
-gulp.task('copy:universal', copyFiles('tmp/universal/**/*', 'dist/universal', false));
-gulp.task('copy:universal:watch', copyFiles('tmp/universal/**/*', 'dist/universal', true));
-gulp.task('copy:assets', copyFiles('src/client/assets/**/*', 'dist/public', false));
-gulp.task('copy:assets:watch', copyFiles('src/client/assets/**/*', 'dist/public', true));
-gulp.task('copy:files', ['copy:tmp', 'copy:server', 'copy:universal', 'copy:assets']);
-gulp.task('copy:files:watch', ['copy:tmp:watch', 'copy:server:watch', 'copy:universal:watch', 'copy:assets:watch']);
-
 gulp.task('build:styles', buildStyles(false));
 gulp.task('watch:styles', buildStyles(true));
